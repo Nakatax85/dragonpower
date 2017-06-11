@@ -12,6 +12,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 public class StartScreen implements KeyboardHandler {
 
+    public static final int PADDING = 10;
     Picture background;
     Text startText;
     Text spaceText;
@@ -19,7 +20,7 @@ public class StartScreen implements KeyboardHandler {
     public StartScreen(){
 
         Keyboard startKeyboard = new Keyboard(this);
-        background = new Picture(10,10,"/Users/codecadet/workspace/dragonpower/resources/imgs/5090422-wasteland.jpg");
+        background = new Picture(PADDING,PADDING,"5090422-wasteland.jpg");
         background.draw();
 
         startText = new Text(330,300,"Welcome to Dragon Power!");

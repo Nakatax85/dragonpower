@@ -5,5 +5,5 @@ package org.earthspecialforces.dragonpower.Testers.game;
  */
 public class Game {
 
-    private static final SCREEN_WIDTH = (int)
+    //private static final SCREEN_WIDTH = (int)
 }
