@@ -1,4 +1,4 @@
-package org.earthspecialforces.dragonpower.Testers;
+package org.earthspecialforces.dragonpower.Testers.testers;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;

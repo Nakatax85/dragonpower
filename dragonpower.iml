@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="WEB_MODULE" version="4">
+<module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-<<<<<<< HEAD
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
     </content>
-=======
-    <content url="file://$MODULE_DIR$" />
->>>>>>> 0576e57f46343f2cc99e0f217fe680ec52a2760c
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="simplegraphics" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
