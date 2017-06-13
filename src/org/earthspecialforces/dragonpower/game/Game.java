@@ -5,5 +5,6 @@ package org.earthspecialforces.dragonpower.game;
  */
 public class Game {
 
-    //private static final SCREEN_WIDTH = (int)
+
+
 }
