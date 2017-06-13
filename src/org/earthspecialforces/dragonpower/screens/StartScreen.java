@@ -1,4 +1,4 @@
-package org.earthspecialforces.dragonpower.Testers;
+package org.earthspecialforces.dragonpower.screens;
 
 import org.academiadecodigo.simplegraphics.graphics.*;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -20,7 +20,7 @@ public class StartScreen implements KeyboardHandler {
     public StartScreen(){
 
         Keyboard startKeyboard = new Keyboard(this);
-        background = new Picture(PADDING,PADDING,"5090422-wasteland.jpg");
+        background = new Picture(PADDING,PADDING, "imgs/Background_wasteland.jpg");
         background.draw();
 
         startText = new Text(330,300,"Welcome to Dragon Power!");

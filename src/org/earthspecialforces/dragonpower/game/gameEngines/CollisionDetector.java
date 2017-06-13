@@ -1,4 +1,4 @@
-package org.earthspecialforces.dragonpower.Testers.engines;
+package org.earthspecialforces.dragonpower.game.gameEngines;
 
 /**
  * Created by njsilva on 11/06/2017.
