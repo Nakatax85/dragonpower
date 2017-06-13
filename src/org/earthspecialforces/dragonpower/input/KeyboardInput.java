@@ -5,6 +5,10 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.earthspecialforces.dragonpower.game.gameObjects.Player;
+import org.earthspecialforces.dragonpower.screens.GameScreen;
+import org.earthspecialforces.dragonpower.screens.Screen;
+import org.earthspecialforces.dragonpower.screens.StartScreen;
 
 
 /**
@@ -12,28 +16,32 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
  */
 public class KeyboardInput implements KeyboardHandler {
     private Keyboard keyboard;
-    private Shape [] shapes;
+    private Screen screen;
+    private Player player;
     private boolean pressed = false;
 
-    public KeyboardInput(Shape [] shape) {
-        this.keyboard = new Keyboard(this);
-        this.shapes = shape;
+    public KeyboardInput(Player player) {
+        keyboard = new Keyboard(this);
+        screen = new StartScreen();
         setEventPressed(new KeyboardEvent());
+        this.player = player;
     }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
-            if(!isPressed()){
-                shapes[0].delete();
-                shapes[1].delete();
-                pressed = true;
+            if(screen instanceof StartScreen){
+                screen.clear();
+                screen = new GameScreen();
             }
-            else{
-
+            else if (screen instanceof GameScreen){
+                player.jump();
             }
-
         }
+        else {
+            player.draw(5);
+        }
+
     }
 
     @Override
@@ -55,10 +63,8 @@ public class KeyboardInput implements KeyboardHandler {
         return keyboard;
     }
 
-    public void setShapes(Shape [] shapes){
-        this.shapes = shapes;
+    public Screen getScreen() {
+        return screen;
     }
-
-
 }
 

@@ -11,27 +11,11 @@ public class GameObjectFactory {
      */
     public static GameObject getNewGameObject() {
 
-        int random = (int) (Math.random() * CarType.values().length);
-        CarType carType = CarType.values()[random];
-
-        Car car;
-
-        switch (carType) {
-            case FIAT:
-                car = new Fiat();
-                break;
-            case MUSTANG:
-                car = new Mustang();
-                break;
-            default:
-                car = new Fiat();
-        }
-
-        return car;
+       return null;
 
     }
 
-}
+
 
     public Crashable createCrashable(){
 

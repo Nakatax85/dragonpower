@@ -34,7 +34,6 @@ public class GameObject {
         positionX = positionX - toLeft;
     }
 
-    public void
 
     public void getPosition(){}
 
