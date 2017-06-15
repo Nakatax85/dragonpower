@@ -5,8 +5,8 @@ package org.earthspecialforces.dragonpower.game.gameObjects;
  */
 public interface Collectable {
 
-    void isHit();
+    boolean isHit();
 
-    void isCollected();
+    boolean isCollected();
 
 }
