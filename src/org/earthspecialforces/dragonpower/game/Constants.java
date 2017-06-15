@@ -16,6 +16,12 @@ public abstract class Constants {
     public static final int PLAYER_INITIAL_X = 110;
     public static final int PLAYER_INITIAL_Y = 110;
 
+    public enum Direction{
+        RIGHT,
+        LEFT,
+        Up,
+        Down
+    }
 
 
 }
