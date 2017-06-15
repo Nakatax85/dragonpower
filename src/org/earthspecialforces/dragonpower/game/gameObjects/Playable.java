@@ -10,7 +10,7 @@ public interface Playable {
 
     void jump();
 
-    void isDead();
+    boolean isAlive();
 
 
 }

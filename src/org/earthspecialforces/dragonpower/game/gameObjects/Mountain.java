@@ -10,8 +10,6 @@ public class Mountain extends GameObject {
         super(x, y, gameObjectImage);
     }
 
-    /** PROPERTIES:
-     */
 
 
 }

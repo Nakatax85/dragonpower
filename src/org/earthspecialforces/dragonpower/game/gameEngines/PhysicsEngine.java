@@ -11,7 +11,7 @@ public class PhysicsEngine {
     private static final int TERMINAL_VELOCITY = 50;
     private double gravity;
     private double verticalSpeed;
-    private double horizontalSpeed = 5;
+    private double horizontalSpeed = 7;
 
     public PhysicsEngine() {
         gravity = 0.8;
@@ -34,7 +34,7 @@ public class PhysicsEngine {
     }
 
     public void moveLeft(TestObstacle obstacle){
-        obstacle.setPositionX(horizontalSpeed);
+        obstacle.moveLeft(horizontalSpeed);
     }
 
     public double getVerticalSpeed() {
