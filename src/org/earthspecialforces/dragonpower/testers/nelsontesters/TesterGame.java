@@ -45,7 +45,7 @@ public class TesterGame implements KeyboardHandler {
         buildings.addBuilding(true);
         buildings.addBuilding(true);
 
-        timer.start();
+
     }
 
     public void playerJump() {
