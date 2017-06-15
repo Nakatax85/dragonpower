@@ -22,8 +22,14 @@ public class KeyboardInput implements KeyboardHandler {
 
     public KeyboardInput(Player player) {
         keyboard = new Keyboard(this);
-        screen = new StartScreen();
-        setEventPressed(new KeyboardEvent());
+        //screen = new StartScreen();
+
+        screen = new GameScreen(); //testing gravity
+
+        KeyboardEvent spacePressedEvent = new KeyboardEvent();
+        spacePressedEvent.setKey(KeyboardEvent.KEY_SPACE);
+        spacePressedEvent.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(spacePressedEvent);
         this.player = player;
     }
 
@@ -37,9 +43,6 @@ public class KeyboardInput implements KeyboardHandler {
             else if (screen instanceof GameScreen){
                 player.jump();
             }
-        }
-        else {
-            player.draw(5);
         }
 
     }

@@ -8,6 +8,9 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Screen {
 
     public static final int PADDING = 10;
+    public static final int MAX_SCREEN_WIDTH = 600;
+    public static final int MAX_SCREEN_HEIGHT = 400;
+
     private Picture background;
 
     public Screen(Picture background){
