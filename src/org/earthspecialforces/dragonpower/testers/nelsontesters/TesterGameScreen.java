@@ -1,4 +1,4 @@
-package org.earthspecialforces.dragonpower.Testers.nelsontesters;
+package org.earthspecialforces.dragonpower.testers.nelsontesters;
 
 import javafx.scene.paint.Color;
 import org.academiadecodigo.simplegraphics.graphics.*;
