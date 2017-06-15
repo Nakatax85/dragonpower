@@ -27,13 +27,14 @@ public class Bean extends GameObject implements Collectable{
         return collected;
     }
 
+    public int getValue(){
+        return value;
+    }
+
     public void draw(){
         super.draw();
     }
 
-    public void clear(){
-
-    }
 
 
 }
