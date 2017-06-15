@@ -6,8 +6,8 @@ package org.earthspecialforces.dragonpower.game.gameObjects;
 public class GameObjectFactory {
 
     /**
-     * Manufactures new random cars
-     * @return a newly instantiated car
+     * Manufactures new Game Objects
+     * @return a newly instantiated Game Object
      */
     public static GameObject getNewGameObject() {
 
