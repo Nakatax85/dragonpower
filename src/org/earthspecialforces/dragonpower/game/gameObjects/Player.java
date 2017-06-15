@@ -1,24 +1,27 @@
 package org.earthspecialforces.dragonpower.game.gameObjects;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.earthspecialforces.dragonpower.game.Constants;
+
+import static org.earthspecialforces.dragonpower.game.Constants.PLAYER_INITIAL_X;
+import static org.earthspecialforces.dragonpower.game.Constants.PLAYER_INITIAL_Y;
 
 /**
  * Created by joaorocha on 13/06/2017.
  */
 public class Player {
 
-    private static final int INITIAL_POSITION_X = 110;
-    private static final int INITIAL_POSITION_Y = 110;
+
     String imagePath = "imgs/Goku_Cloud_1.png";
 
-    Picture image;
+    private Picture image;
     private double positionY;
     private boolean alive;
     private boolean jumped;
 
     public Player() {
-        positionY = INITIAL_POSITION_Y;
-        image = new Picture(INITIAL_POSITION_X, positionY, imagePath);
+        positionY = PLAYER_INITIAL_Y;
+        image = new Picture(PLAYER_INITIAL_X, PLAYER_INITIAL_Y, imagePath);
 
     }
 
@@ -38,8 +41,8 @@ public class Player {
             distance = 0;
         }
         //bottom border
-        if (positionY > 400) {
-            positionY = 400;
+        if (positionY > Constants.MAX_SCREEN_HEIGHT) {
+            positionY = Constants.MAX_SCREEN_HEIGHT;
             distance = positionY - image.getY();
         }
 

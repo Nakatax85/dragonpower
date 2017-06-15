@@ -20,11 +20,11 @@ public class KeyboardInput implements KeyboardHandler {
     private Player player;
     private boolean pressed = false;
 
-    public KeyboardInput(Player player) {
+    public KeyboardInput(Player player, Screen screen) {
         keyboard = new Keyboard(this);
-        //screen = new StartScreen();
+        this.screen = screen;
 
-        screen = new GameScreen(); //testing gravity
+        //screen = new GameScreen(); //testing gravity
 
         KeyboardEvent spacePressedEvent = new KeyboardEvent();
         spacePressedEvent.setKey(KeyboardEvent.KEY_SPACE);

@@ -4,6 +4,8 @@ import org.academiadecodigo.simplegraphics.graphics.*;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.earthspecialforces.dragonpower.input.KeyboardInput;
 
+import static org.earthspecialforces.dragonpower.game.Constants.PADDING;
+
 /**
  * Created by joaorocha on 11/06/2017.
  */
