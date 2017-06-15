@@ -1,67 +1,19 @@
-package org.earthspecialforces.dragonpower.Testers.nelsontesters;
+package org.earthspecialforces.dragonpower.testers.nelsontesters;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
- * Created by njsilva on 13/06/2017.
+ * Created by NJSilva on 15/06/2017.
  */
 public class TesterPlayer {
 
-    private Picture goku;
-    private int xLoc = 0, yLoc = 0;
+    private Rectangle hero;
 
-
-    public TesterPlayer(int initialWidth, int initialHeight) {
-        goku = new Picture(initialWidth, initialHeight, "imgs/Goku_Cloud_1.png");
-
+    public TesterPlayer() {
+        hero = new Rectangle(800 / 2 - 10, 800 / 2 - 10, 20, 20);
     }
 
-    public Picture getGoku() {
-        return goku;
-    }
 
-    public int getWidth() {
-        try {
-            return goku.getWidth();
-        } catch (Exception e) {
-            return -1;
-        }
-    }
-
-    public int getHeight() {
-        try {
-            return goku.getHeight();
-        } catch (Exception e) {
-            return -1;
-        }
-    }
-
-    public void setxLoc(int x) {
-        xLoc = 0;
-    }
-
-    public int getxLoc(){
-        return xLoc;
-    }
-
-    public void setyLoc(int y) {
-        this.yLoc = y;
-    }
-
-    public int getyLoc() {
-        return yLoc;
-    }
-
-    public Rectangle getRectangle(){
-        return (new Rectangle(xLoc,yLoc,goku.getWidth(),goku.getHeight()));
-    }
-
-    public Picture getGokuImage(){
-        Picture gokuImage = new Picture(goku.getWidth(),goku.getHeight(),"imgs/Goku_Cloud_1.png");
-        gokuImage.draw();
-        return gokuImage;
-    }
 
 
 }

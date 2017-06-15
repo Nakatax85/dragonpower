@@ -1,15 +1,25 @@
-package org.earthspecialforces.dragonpower.Testers.nelsontesters;
+package org.earthspecialforces.dragonpower.testers.nelsontesters;
+
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.earthspecialforces.dragonpower.game.gameObjects.Building;
+import org.earthspecialforces.dragonpower.screens.Screen;
 
 /**
- * Created by njsilva on 13/06/2017.
+ * Created by NJSilva on 15/06/2017.
  */
 public class TesterMain {
     public static void main(String[] args) {
+        Building b = new Building();
+        Rectangle r = new Rectangle();
+        Rectangle screen = new Rectangle(Screen.PADDING,Screen.PADDING,800,800);
 
-        TesterGame tg = new TesterGame();
+        screen.setColor(Color.BLACK);
+        screen.fill();
 
-        tg.start();
-
+        b.addBuilding(true);
+        b.paintBuilding(r);
     }
+
 
 }
