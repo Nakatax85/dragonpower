@@ -179,8 +179,8 @@ public class GameObject {
     }
 
 
-    public void clear(){
-        gameObjectImage.delete();
+    public Picture getGameObjectImage(){
+        return gameObjectImage;
     }
 
 

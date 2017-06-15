@@ -32,6 +32,8 @@ public class Bean extends GameObject implements Collectable{
     }
 
     public void draw(){
+
+        //super.getGameObjectImage().grow(-10,-10);
         super.draw();
     }
 
