@@ -1,4 +1,4 @@
-package org.earthspecialforces.dragonpower.Testers.nelsontesters;
+package org.earthspecialforces.dragonpower.testers.nelsontesters;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;

@@ -1,4 +1,4 @@
-package org.earthspecialforces.dragonpower.Testers.nelsontesters;
+package org.earthspecialforces.dragonpower.testers.nelsontesters;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -15,7 +15,7 @@ import java.awt.event.KeyListener;
  * Created by njsilva on 13/06/2017.
  */
 public class TesterGame implements ActionListener, KeyListener {
-
+/*
     private static final int SCREEN_WIDTH = 800;
     private static final int SCREEN_HEIGHT = 600;
     private Rectangle frame = new Rectangle(10, 10, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -193,6 +193,8 @@ public class TesterGame implements ActionListener, KeyListener {
         return temp;
     }
 
+    */
+
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -206,5 +208,13 @@ public class TesterGame implements ActionListener, KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    public void start() {
     }
 }

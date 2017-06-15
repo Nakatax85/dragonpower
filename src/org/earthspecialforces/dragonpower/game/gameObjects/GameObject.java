@@ -19,6 +19,15 @@ public class GameObject {
 
     private int positionY;
 
+
+    public GameObject(int x, int y, Picture gameObjectImage){
+        positionX = x;
+        positionY = y;
+        this.gameObjectImage = gameObjectImage;
+    }
+
+
+
     /**
      * The GameObject collision detector
      */
@@ -37,7 +46,11 @@ public class GameObject {
 
     public void getPosition(){}
 
-    public void draw(){}
+    public void draw(){
+        gameObjectImage.draw();
+    }
+
+    public void
 
 
 }

@@ -5,10 +5,35 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 /**
  * Created by joaorocha on 13/06/2017.
  */
-public class Bean extends GameObject {
+public class Bean extends GameObject implements Collectable{
+    private boolean collected;
+    private boolean hit;
+    private int value;
 
-    /** PROPERTIES:
-     */
+    public Bean (int x, int y,String imagePath){
+        super(x,y,new Picture(x,y,imagePath));
+        collected = false;
+        hit = false;
+        value = 1;
+    }
+
+    @Override
+    public boolean isHit() {
+        return hit;
+    }
+
+    @Override
+    public boolean isCollected() {
+        return collected;
+    }
+
+    public void draw(){
+        super.draw();
+    }
+
+    public void clear(){
+
+    }
 
 
 }
