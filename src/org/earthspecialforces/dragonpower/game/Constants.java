@@ -24,6 +24,8 @@ public abstract class Constants {
     //Distance between obstacles
     public static final int OBSTACLES_DISTANCE = 450;
 
+
+
     public enum Direction{
         LEFT,
         RIGHT,
