@@ -3,9 +3,7 @@ package org.earthspecialforces.dragonpower.game.gameObjects;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.earthspecialforces.dragonpower.game.Constants;
 
-import static org.earthspecialforces.dragonpower.game.Constants.GOKU_HEIGHT;
-import static org.earthspecialforces.dragonpower.game.Constants.PLAYER_INITIAL_X;
-import static org.earthspecialforces.dragonpower.game.Constants.PLAYER_INITIAL_Y;
+import static org.earthspecialforces.dragonpower.game.Constants.*;
 
 /**
  * Created by joaorocha on 13/06/2017.
@@ -29,15 +27,16 @@ public class Player implements Playable {
     @Override
     public void jump() {
         if (alive) {
-            if (positionY > 38.4) {
-                positionY -= 38.4;
-                image.translate(0, -38.4);
+            if (positionY > JUMP_HEIGHT) {
+                positionY -= JUMP_HEIGHT;
+                image.translate(0, -JUMP_HEIGHT);
                 image.draw();
                 jumped = true;
             }
         }
     }
 
+    //TODO: Ver se faz sentido tirar o draw para outra class
     public void draw(double distance) {
         //top border
         if (positionY < 0) {
@@ -45,12 +44,11 @@ public class Player implements Playable {
             distance = 0;
         }
         //bottom border
-        if (positionY > Constants.MAX_SCREEN_HEIGHT - GOKU_HEIGHT) {
-            positionY = Constants.MAX_SCREEN_HEIGHT - GOKU_HEIGHT;
+        if (positionY > MAX_SCREEN_HEIGHT - GOKU_HEIGHT) {
+            positionY = MAX_SCREEN_HEIGHT - GOKU_HEIGHT;
             distance = positionY - image.getY();
             alive = false;
         }
-
         image.translate(0, distance);
         image.draw();
     }
@@ -59,8 +57,8 @@ public class Player implements Playable {
         return positionY;
     }
 
-    public void setPositionY(double positionY) {
-        this.positionY = positionY;
+    public void updatePosition(double distance) {
+        this.positionY = this.positionY + distance;
     }
 
     public Picture getImage() {
@@ -76,6 +74,7 @@ public class Player implements Playable {
         return alive;
     }
 
+    //TODO: Change this setter
     public void setJumped(boolean jumped) {
         this.jumped = jumped;
     }

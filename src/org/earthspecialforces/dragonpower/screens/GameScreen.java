@@ -14,7 +14,7 @@ public class GameScreen extends Screen {
 
     public GameScreen(){
 
-        super(new Picture(PADDING,PADDING, "imgs/Bckg_2.jpg"));
+        super(new Picture(PADDING,PADDING, "imgs/Satan_City.jpg"));
         super.drawBackground();
 
     }

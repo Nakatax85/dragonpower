@@ -1,6 +1,5 @@
 package org.earthspecialforces.dragonpower.input;
 
-import org.academiadecodigo.simplegraphics.graphics.Shape;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -9,9 +8,6 @@ import org.earthspecialforces.dragonpower.game.gameObjects.Player;
 import org.earthspecialforces.dragonpower.screens.GameScreen;
 import org.earthspecialforces.dragonpower.screens.Screen;
 import org.earthspecialforces.dragonpower.screens.StartScreen;
-import org.earthspecialforces.dragonpower.testers.TestObstacle;
-
-import java.util.LinkedList;
 
 
 /**
@@ -24,19 +20,15 @@ public class KeyboardInput implements KeyboardHandler {
     private boolean pressed = false;
 
     public KeyboardInput(Player player, Screen screen) {
-
-
-
         keyboard = new Keyboard(this);
         this.screen = screen;
+        this.player = player;
 
         //screen = new GameScreen(); //testing gravity
 
         KeyboardEvent spacePressedEvent = new KeyboardEvent();
-        spacePressedEvent.setKey(KeyboardEvent.KEY_SPACE);
-        spacePressedEvent.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(spacePressedEvent);
-        this.player = player;
+        setEventPressed(spacePressedEvent);
+
     }
 
     @Override
@@ -49,8 +41,9 @@ public class KeyboardInput implements KeyboardHandler {
             else if (screen instanceof GameScreen){
                 player.jump();
             }
+            //TODO: Create an event to push ESC and exit the game
+            //TODO: Create an event to push the key P to pause the game
         }
-
     }
 
     @Override

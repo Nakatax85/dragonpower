@@ -1,5 +1,6 @@
 package org.earthspecialforces.dragonpower.testers;
 
+import org.earthspecialforces.dragonpower.game.Game;
 import org.earthspecialforces.dragonpower.game.gameEngines.PhysicsEngine;
 import org.earthspecialforces.dragonpower.game.gameObjects.Player;
 import org.earthspecialforces.dragonpower.input.KeyboardInput;
@@ -14,6 +15,7 @@ public class DragonPowerTester {
         int delay = 40;
 
         Player player = new Player();
+        //Game game = new Game(player);
         TestGame game = new TestGame(player);
 
         //Player Image's dimensions:
@@ -24,7 +26,6 @@ public class DragonPowerTester {
         game.start(player, delay);
 
     }
-
 
 }
 
