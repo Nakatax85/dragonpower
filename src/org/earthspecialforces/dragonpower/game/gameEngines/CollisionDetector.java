@@ -6,17 +6,13 @@ import org.earthspecialforces.dragonpower.game.gameObjects.Player;
 
 import java.util.LinkedList;
 
-import static org.earthspecialforces.dragonpower.game.Constants.PLAYER_INITIAL_X;
-
 /**
  * Created by njsilva on 11/06/2017.
  */
 public class CollisionDetector {
 
-    private GameObject ground;
 
-    public CollisionDetector(GameObject ground) {
-        this.ground = ground;
+    public CollisionDetector() {
     }
 
     public boolean checkForCollisions(Player player, LinkedList<GameObject> gameObjectList) {
@@ -30,32 +26,49 @@ public class CollisionDetector {
         return false;
     }
 
-    public void checkAbove(GameObject gameObject, Player player) {
+    public boolean checkAbove(GameObject gameObject, Player player) {
 
-        double playerFrontSide = 0;
-        playerFrontSide = PLAYER_INITIAL_X + player.getImage().getWidth();
-
-        if (playerFrontSide == gameObject.getPositionX()) {
-
-            if (gameObject instanceof Building) {
-
-                /*if (player.getPositionY() < ((Building) gameObject).getGap().getY() &&
-                        player.getPositionY() > ((Building) gameObject).getBottom().getY()) {*/
-
-                    System.out.println("Player has collided with something.");
-                    player.isDead();
-               // }
-            }
+        if (maxX(player) < gameObject.getX()) {
+            return false;
         }
-    }
+
+        if (gameObject instanceof Building) {
+            Building building = (Building) gameObject;
+
+            if (player.getImage().getX() > building.getGap().getX() + building.getGap().getWidth() ){
+                return false;
+            }
+
+            if (maxY(player) < gapTopY(building) &&
+                    player.getImage().getMaxY() > gapBotY(building)) {
+
+                System.out.println("Player has collided with building.");
+                player.isDead();
+                return true;
+            }
+
+        }
 
 
-    public boolean checkInFront() {
         return false;
     }
 
-    public boolean checkBelow() {
-        return false;
+    public double maxY (Player player){
+        return player.getImage().getMaxY();
     }
+
+    public double maxX (Player player){
+        return player.getImage().getMaxX() - 8;
+    }
+
+
+    public double gapTopY (Building building){
+        return building.getGap().getY();
+    }
+
+    public double gapBotY (Building building){
+        return building.getGap().getY() + building.getGap().getHeight();
+    }
+
 
 }

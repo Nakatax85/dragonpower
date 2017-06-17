@@ -82,7 +82,7 @@ public class TestGame {
     public void createNewObstacles(){
         if (obstaclesList.getLast().getPositionX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE){
 
-            //System.out.println("Last Object X = " + obstaclesList.getLast().getPositionX());
+            //System.out.println("Last Object X = " + obstaclesList.getLast().getX());
             obstaclesList.add(new TestObstacle());
         }
     }

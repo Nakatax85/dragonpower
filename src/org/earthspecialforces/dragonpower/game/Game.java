@@ -10,7 +10,6 @@ import org.earthspecialforces.dragonpower.game.gameObjects.Player;
 import org.earthspecialforces.dragonpower.input.KeyboardInput;
 import org.earthspecialforces.dragonpower.screens.Screen;
 import org.earthspecialforces.dragonpower.screens.StartScreen;
-import org.earthspecialforces.dragonpower.testers.TestObstacle;
 
 import java.util.LinkedList;
 
@@ -50,7 +49,7 @@ public class Game {
         screen = k.getScreen();
         ground = new Ground();
 
-        collisionDetector = new CollisionDetector(ground);
+        collisionDetector = new CollisionDetector();
         //TODO Create a GameObjects Factory
         Building building = new Building();
         objectsList.add(building);
@@ -91,9 +90,9 @@ public class Game {
     }
 
     public void createNewObstacles(){
-        if (objectsList.getLast().getPositionX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE){
+        if (objectsList.getLast().getX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE){
 
-            //System.out.println("Last Object X = " + objectsList.getLast().getPositionX());
+            //System.out.println("Last Object X = " + objectsList.getLast().getX());
             objectsList.add(new Building());
         }
     }

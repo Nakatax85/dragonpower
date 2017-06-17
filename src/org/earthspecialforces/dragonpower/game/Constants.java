@@ -19,10 +19,10 @@ public abstract class Constants {
     public static final int PADDING = 10;
 
     //Player's initial position
-    public static final int PLAYER_INITIAL_X = 109;
-    public static final int PLAYER_INITIAL_Y = 109;
+    public static final int PLAYER_INITIAL_X = 400;
+    public static final int PLAYER_INITIAL_Y = 110;
     public static final int WIDTH = 75;
-    public static final double GAP_HEIGHT = GOKU_HEIGHT * 2;
+    public static final double GAP_HEIGHT = GOKU_HEIGHT * 1.5;
 
     //Obstacles constants
     //Distance between obstacles
@@ -31,8 +31,8 @@ public abstract class Constants {
 
     //Physics Engine - constants
     public static final int TERMINAL_VELOCITY = 50;
-    public static final double GRAVITY = 0.8;
-    public static final double HORIZONTAL_SPEED = 5;
+    public static final double GRAVITY = 0.02;
+    public static final double HORIZONTAL_SPEED = 1;
 
     public enum Direction{
         LEFT,

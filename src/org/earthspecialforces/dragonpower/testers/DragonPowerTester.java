@@ -12,7 +12,7 @@ public class DragonPowerTester {
 
     public static void main(String[] args) throws InterruptedException {
 
-        int delay = 40;
+        int delay = 5;
 
         Player player = new Player();
         Game game = new Game(player);

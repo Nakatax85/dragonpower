@@ -15,7 +15,7 @@ public class Ground extends GameObject implements Crashable{
 
     public Ground(){
         super(PADDING,PADDING+MAX_SCREEN_HEIGHT);
-        ground = new Picture(super.getPositionX(),super.getPositionY(),groundImagePath);
+        ground = new Picture(super.getX(),super.getPositionY(),groundImagePath);
         ground.draw();
     }
 

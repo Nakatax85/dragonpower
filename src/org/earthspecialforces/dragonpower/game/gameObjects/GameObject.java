@@ -21,9 +21,11 @@ public class GameObject {
         this.positionX = this.positionX - distance;
     }
 
-    public double getPositionX() {
+    public double getX() {
         return positionX;
     }
+
+
 
     public double getPositionY() {
         return positionY;
