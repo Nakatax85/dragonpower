@@ -13,24 +13,25 @@ import static org.earthspecialforces.dragonpower.game.Constants.*;
  */
 public class Building extends GameObject {
 
-    //private Rectangle top;
-    //private Rectangle bottom;
+    private Rectangle top;
+    private Rectangle gap;
+    private Rectangle bottom;
 
+    /*
     private Picture topBuilding;
     private String topBuildingPath = "imgs/Building_2_top.png";
     private Rectangle gap;
     private Picture bottomBuilding;
     private String bottomBuildingPath = "imgs/Building_2_bottom.png";
-
+    */
 
 
     public Building(){
         super(MAX_SCREEN_WIDTH - WIDTH, PADDING);
 
-        /* Rectangles logic
+
         //TODO: Melhorar a geração do numero random
         Random random = new Random();
-
         top = new Rectangle(super.getPositionX(), PADDING, WIDTH, random.nextInt(MAX_SCREEN_HEIGHT - (int) GAP_HEIGHT));
         top.setColor(Color.BLUE);
         top.fill();
@@ -38,16 +39,25 @@ public class Building extends GameObject {
         gap = new Rectangle(super.getPositionX(), PADDING + top.getHeight(), WIDTH, GAP_HEIGHT);
 
         //TODO: Dar um PADDING ao bottom para criar a imagem do chão
-        bottom = new Rectangle(super.getPositionX(), PADDING + top.getHeight() + gap.getHeight(), WIDTH, MAX_SCREEN_HEIGHT - gap.getHeight() - top.getHeight() + PADDING);
+        bottom = new Rectangle(super.getPositionX(), PADDING + top.getHeight() + gap.getHeight(), WIDTH, MAX_SCREEN_HEIGHT - gap.getHeight() - top.getHeight());
         bottom.setColor(Color.BLUE);
         bottom.fill();
-        */
 
-        topBuilding = new Picture(super.getPositionX(), PADDING, topBuildingPath);
+
+        /*
+        Random random = new Random();
+        topBuilding = new Picture(WIDTH,random.nextInt(MAX_SCREEN_HEIGHT - (int) GAP_HEIGHT));
+        topBuilding.translate(super.getPositionX(),PADDING);
+        topBuilding.load(topBuildingPath);
+        topBuilding.grow(-57.5,(621-topBuilding.getHeight())/2);
 
         gap = new Rectangle(super.getPositionX(), PADDING + topBuilding.getHeight(), WIDTH, GAP_HEIGHT);
 
-        bottomBuilding = new Picture ()
+        bottomBuilding = new Picture (WIDTH,MAX_SCREEN_HEIGHT - gap.getHeight() - topBuilding.getHeight() + PADDING);
+        bottomBuilding.translate(super.getPositionX(),PADDING + topBuilding.getHeight() + gap.getHeight());
+        bottomBuilding.load(bottomBuildingPath);
+        bottomBuilding.grow(-57.5,(621-bottomBuilding.getHeight())/2);
+        */
     }
 
     //TODO: Ver se faz sentido tirar o draw para outra class
@@ -57,6 +67,14 @@ public class Building extends GameObject {
         gap.translate(-distance, 0);
         bottom.translate(-distance, 0);
         bottom.fill();
+
+        /*
+        topBuilding.translate(-distance, 0);
+        topBuilding.draw();
+        gap.translate(-distance, 0);
+        bottomBuilding.translate(-distance, 0);
+        bottomBuilding.draw();
+        */
     }
 
     public double getPositionX(){
@@ -70,6 +88,7 @@ public class Building extends GameObject {
 
     public Rectangle getTop() {
         return top;
+        //return topBuilding;
     }
 
     public Rectangle getGap() {
@@ -78,5 +97,6 @@ public class Building extends GameObject {
 
     public Rectangle getBottom() {
         return bottom;
+        //return bottomBuilding;
     }
 }

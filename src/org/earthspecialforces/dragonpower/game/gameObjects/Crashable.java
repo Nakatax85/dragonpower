@@ -5,7 +5,7 @@ package org.earthspecialforces.dragonpower.game.gameObjects;
  */
 public interface Crashable {
 
+
     void isHit();
 
-    void isDestroyed();
 }

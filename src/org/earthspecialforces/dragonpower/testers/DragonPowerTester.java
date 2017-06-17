@@ -15,8 +15,8 @@ public class DragonPowerTester {
         int delay = 40;
 
         Player player = new Player();
-        //Game game = new Game(player);
-        TestGame game = new TestGame(player);
+        Game game = new Game(player);
+        //TestGame game = new TestGame(player);
 
         //Player Image's dimensions:
 
