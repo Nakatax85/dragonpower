@@ -20,7 +20,9 @@ public class Bean extends GameObject implements Collectable {
     private int rotationLimit = 0;
     private Picture p1;
     private Picture p2;
+    private Picture line;
     private boolean disappered = false;
+    private int i = 0;
 
 
     public Bean(int x, int y, String imagePath) {
@@ -32,7 +34,9 @@ public class Bean extends GameObject implements Collectable {
 
         p1 = new Picture(100, 100, imagePath);
         p2 = new Picture(100, 100,imagePath);
-        p2.translate(400, 400);
+        line = new Picture(1,p2.getHeight());
+        line.translate(400, 400);
+        p2.translate(500,500);
     }
 
     @Override
@@ -76,6 +80,9 @@ public class Bean extends GameObject implements Collectable {
         }
 
         */
+
+
+
         if (!disappered) {
 //            copyColumnPixels(p1,p2);
 
@@ -84,7 +91,7 @@ public class Bean extends GameObject implements Collectable {
             System.out.println("getMaxX" + p2.getMaxX());
             System.out.println("GetHeight:" + p2.getHeight());
             System.out.println("getMaxY" + p2.getMaxY());
-            System.out.println(p1.pixels());
+
 
 
             p2.setColorAt(0,0,Color.RED);
@@ -94,27 +101,27 @@ public class Bean extends GameObject implements Collectable {
 
             p1.setColorAt(0,0,p2.getColorAt(0,0));
             //paints p2 a RED
-            paintColumn(p2,0,Color.RED);
 
-
-            //copy p2 to p1 the RED line
-            copyColumn(p2,p1,0 );
-
-            //copy p1 to p2 on end of line
-            copyDifferentColumns(p1,p2,0,p1.getWidth() - 1 );
-
-           // paintColumn(p1,0,p2.getColorAt(0,));
-
-
-            //  System.out.println("Red:"+p1.getColorAt(i).getRed() + "\nGreen:"+p1.getColorAt(i).getGreen() + "\nBlue:"+p1.getColorAt(i).getBlue());
+            paintColumn(line,0,Color.RED);
 
             //p1.grow(100, 100)
             //  p2.grow(100, 100);
             disappered = true;
 
     }
-        p1.draw();
+
+        copyColumn(p2,line,0 );
+        for (int j = 1; j < p2.getWidth() - 1; j++) {
+             copyDifferentColumns(p2,p2,j,j-1);
+        }
+        System.out.println(p2.getWidth());
+        System.out.println(line.getWidth());
+        copyDifferentColumns(line,p2,0,p2.getWidth() -1 );
+
+
+       // p1.draw();
         p2.draw();
+        line.draw();
 }
 
     private void copyColumnPixels(Picture source, Picture destination) {
@@ -151,7 +158,7 @@ public class Bean extends GameObject implements Collectable {
     }
 
     private  void copyColumn(Picture source, Picture destination, int column ){
-        int height = source.getHeight();
+        int height = destination.getHeight();
 
         for (int i = 0; i < height  ; i++) {
             destination.setColorAt(column,i,source.getColorAt(column,i));
@@ -159,9 +166,10 @@ public class Bean extends GameObject implements Collectable {
     }
 
     private  void copyDifferentColumns(Picture source, Picture destination, int columnSource,int columnDestination ){
-        int height = source.getHeight();
+        int height = destination.getHeight();
 
         for (int i = 0; i < height  ; i++) {
+        //    System.out.println("CopyDifferentColumns:\ni="+i+"\nColumnDestination:"+columnDestination+"\nColumnSource"+columnSource);
             destination.setColorAt(columnDestination,i,source.getColorAt(columnSource,i));
         }
     }
