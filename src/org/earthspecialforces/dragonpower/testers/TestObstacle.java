@@ -39,11 +39,12 @@ public class TestObstacle {
 
     //TODO: Ver se faz sentido tirar o draw para outra class
     public void draw(double distance) {
+        /*
         top.translate(-distance, 0);
         top.fill();
         gap.translate(-distance, 0);
         bottom.translate(-distance, 0);
-        bottom.fill();
+        bottom.fill();*/
     }
 
     public double getPositionX() {
