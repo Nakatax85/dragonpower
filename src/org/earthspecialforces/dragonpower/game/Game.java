@@ -1,11 +1,11 @@
 package org.earthspecialforces.dragonpower.game;
 
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.earthspecialforces.dragonpower.game.gameEngines.CollisionDetector;
 import org.earthspecialforces.dragonpower.game.gameEngines.PhysicsEngine;
 import org.earthspecialforces.dragonpower.game.gameObjects.Building;
 import org.earthspecialforces.dragonpower.game.gameObjects.GameObject;
-import org.earthspecialforces.dragonpower.game.gameObjects.Ground;
 import org.earthspecialforces.dragonpower.game.gameObjects.Player;
 import org.earthspecialforces.dragonpower.input.KeyboardInput;
 import org.earthspecialforces.dragonpower.screens.GameScreen;
@@ -37,41 +37,62 @@ public class Game {
         physicsEngine = new PhysicsEngine();
         this.player = player;
         objectsList = new LinkedList<>();
+        collisionDetector = new CollisionDetector();
     }
-
 
     public void start(Player player, int delay) throws InterruptedException {
 
-        while (k.getScreen() instanceof StartScreen) {
+        while (!k.isPressed() && screen instanceof StartScreen){
             Thread.sleep(20);
         }
-        screen = k.getScreen();
-        ground = new Ground();
+        screen = new GameScreen();
+        k.stopPressed();
 
-        collisionDetector = new CollisionDetector();
         //TODO Create a GameObjects Factory
         Building building = new Building();
         objectsList.add(building);
 
-        building.draw(0);
-
         while (player.isAlive()) {
             // Pause for a while
             Thread.sleep(delay);
+
+            if(k.isPressed()){
+                player.jump();
+                k.stopPressed();
+            }
             if (collisionDetector.checkForCollisions(player,objectsList)){
                 player.hasDied();
             }
             createNewObstacles();
             makePlayerFall();
             moveObstacles();
-
         }
-        Picture gameOver = new Picture(290, 155, "imgs/Game Over.png");
-        gameOver.draw();
+        gameOver();
+        while (!k.isPressed()){
+            Thread.sleep(20);
+        }
+        initiateNewGame();
     }
 
-    public void moveObstacles() {
-        ground.moveLeft(HORIZONTAL_SPEED);
+    private void gameOver(){
+        Picture gameOver = new Picture(290, 155, "imgs/Game Over.png");
+        Text spaceText = new Text(320,450, "<Press SPACE to RESTART GAME>");
+        gameOver.draw();
+        spaceText.draw();
+    }
+
+    public void initiateNewGame() throws InterruptedException{
+        screen = new GameScreen();
+        k = new KeyboardInput(player, screen);
+        physicsEngine = new PhysicsEngine();
+        this.player = new Player();
+        objectsList = new LinkedList<>();
+        collisionDetector = new CollisionDetector();
+        start(player,GAME_DELAY);
+    }
+
+    private void moveObstacles() {
+        //ground.moveLeft(HORIZONTAL_SPEED);
 
         //TODO: Verificar se pode ser alterado para for-each ou outra coisa qualquer
         for (int i = 0; i <= objectsList.indexOf(objectsList.getLast()); i++) {
@@ -79,17 +100,20 @@ public class Game {
         }
     }
 
-    public void makePlayerFall(){
+    private void makePlayerFall(){
         physicsEngine.fall(player);
         player.draw(physicsEngine.getVerticalSpeed());
     }
 
-    public void createNewObstacles(){
+    private void createNewObstacles(){
         if (objectsList.getLast().getX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE){
-
-            //System.out.println("Last Object X = " + objectsList.getLast().getX());
             objectsList.add(new Building());
         }
+
+        if (objectsList.getFirst().getX() < 0 - OBSTACLES_WIDTH){
+            objectsList.removeFirst();
+        }
     }
+
 }
 
