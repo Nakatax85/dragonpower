@@ -16,15 +16,11 @@ import org.earthspecialforces.dragonpower.screens.StartScreen;
 public class KeyboardInput implements KeyboardHandler {
     private Keyboard keyboard;
     private Screen screen;
-    private Player player;
     private boolean pressed = false;
 
-    public KeyboardInput(Player player, Screen screen) {
+    public KeyboardInput(Screen screen) {
         keyboard = new Keyboard(this);
         this.screen = screen;
-        this.player = player;
-
-        //screen = new GameScreen(); //testing gravity
 
         KeyboardEvent spacePressedEvent = new KeyboardEvent();
         setEventPressed(spacePressedEvent);
@@ -34,25 +30,12 @@ public class KeyboardInput implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
-
             pressed = true;
-            /*
-            if(screen instanceof StartScreen){
-                screen.clear();
-                screen = new GameScreen();
-            }
-            else if (screen instanceof GameScreen){
-                player.jump();
-            }
-            //TODO: Create an event to push ESC and exit the game
-            //TODO: Create an event to push the key P to pause the game
-            */
         }
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
-
     }
 
     private void setEventPressed(KeyboardEvent keyboardEvent) {
@@ -61,7 +44,7 @@ public class KeyboardInput implements KeyboardHandler {
         keyboard.addEventListener(keyboardEvent);
     }
 
-    public boolean isPressed(){
+    public boolean isPressed() {
         return pressed;
     }
 
@@ -69,7 +52,7 @@ public class KeyboardInput implements KeyboardHandler {
         this.pressed = false;
     }
 
-    public Keyboard getKeyboard(){
+    public Keyboard getKeyboard() {
         return keyboard;
     }
 
