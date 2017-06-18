@@ -1,40 +1,41 @@
 package org.earthspecialforces.dragonpower.game.gameEngines;
 
+import org.earthspecialforces.dragonpower.game.gameObjects.Building;
 import org.earthspecialforces.dragonpower.game.gameObjects.Player;
 import org.earthspecialforces.dragonpower.testers.TestObstacle;
+
+import static org.earthspecialforces.dragonpower.game.Constants.GRAVITY;
+import static org.earthspecialforces.dragonpower.game.Constants.HORIZONTAL_SPEED;
+import static org.earthspecialforces.dragonpower.game.Constants.TERMINAL_VELOCITY;
 
 /**
  * Created by joaorocha on 13/06/2017.
  */
 public class PhysicsEngine {
 
-    private static final int TERMINAL_VELOCITY = 50;
-    private double gravity;
     private double verticalSpeed;
-    private double horizontalSpeed = 7;
 
     public PhysicsEngine() {
-        gravity = 0.8;
         verticalSpeed = 0;
     }
 
     public void fall(Player player) {
-        verticalSpeed = verticalSpeed + gravity;
+        verticalSpeed = verticalSpeed + GRAVITY;
 
         if (verticalSpeed > TERMINAL_VELOCITY) {
             verticalSpeed = TERMINAL_VELOCITY;
         }
-        System.out.println("Vertical Speed = " + verticalSpeed);
+        //System.out.println("Vertical Speed = " + verticalSpeed);
         if (player.hasJumped()) {
             verticalSpeed = 0;
             player.setJumped(false);
         }
 
-        player.setPositionY(player.getPositionY() + verticalSpeed);
+        player.updatePosition(verticalSpeed);
     }
 
-    public void moveLeft(TestObstacle obstacle){
-        obstacle.moveLeft(horizontalSpeed);
+    public void moveLeft(Building building){
+        building.moveLeft(HORIZONTAL_SPEED);
     }
 
     public double getVerticalSpeed() {
@@ -42,6 +43,6 @@ public class PhysicsEngine {
     }
 
     public double getHorizontalSpeed() {
-        return horizontalSpeed;
+        return HORIZONTAL_SPEED;
     }
 }

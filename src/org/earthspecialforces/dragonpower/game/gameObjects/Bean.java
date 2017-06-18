@@ -11,8 +11,9 @@ import java.util.WeakHashMap;
 /**
  * Created by joaorocha on 13/06/2017.
  */
-public class Bean extends GameObject implements Collectable{
-    private boolean collected;
+public class Bean {
+    //TODO: Implement Bean class as sub-class of GameObject
+   /* private boolean collected;
     private boolean hit;
     private int value;
     private boolean rotated;
@@ -122,7 +123,7 @@ public class Bean extends GameObject implements Collectable{
 
         System.out.println(source.pixels());
     }
-
+*/
 
 
 }

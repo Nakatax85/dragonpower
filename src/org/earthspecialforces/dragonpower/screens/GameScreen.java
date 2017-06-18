@@ -5,6 +5,7 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.earthspecialforces.dragonpower.game.Constants;
 
+import static org.earthspecialforces.dragonpower.game.Constants.MAX_SCREEN_HEIGHT;
 import static org.earthspecialforces.dragonpower.game.Constants.PADDING;
 
 /**
@@ -14,8 +15,7 @@ public class GameScreen extends Screen {
 
     public GameScreen(){
 
-        super(new Picture(PADDING,PADDING, "imgs/Bckg_2.jpg"));
+        super(new Picture(PADDING,PADDING, "imgs/Satan_City.jpg"));
         super.drawBackground();
-
     }
 }
