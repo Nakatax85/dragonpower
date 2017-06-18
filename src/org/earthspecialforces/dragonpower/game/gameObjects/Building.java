@@ -13,7 +13,7 @@ public class Building extends GameObject {
     private Rectangle top;
     private Rectangle gap;
     private Rectangle bottom;
-    private Color brown = new Color(71, 41, 0);
+    private Color buildingColor = new Color(229, 127, 5);
 
 
 
@@ -23,13 +23,13 @@ public class Building extends GameObject {
 
         //TODO: Melhorar a geração do numero random
         top = new Rectangle(super.getX(), PADDING, OBSTACLES_WIDTH,RandomGen.randomIntBetweenMinAndMax(MAX_SCREEN_HEIGHT*2/9,MAX_SCREEN_HEIGHT*6/9));
-        top.setColor(brown);
+        top.setColor(buildingColor);
         top.fill();
 
         gap = new Rectangle(super.getX(), PADDING + top.getHeight(), OBSTACLES_WIDTH, GAP_HEIGHT);
 
         bottom = new Rectangle(super.getX(), PADDING + top.getHeight() + gap.getHeight(), OBSTACLES_WIDTH, MAX_SCREEN_HEIGHT - gap.getHeight() - top.getHeight());
-        bottom.setColor(brown);
+        bottom.setColor(buildingColor);
         bottom.fill();
 
     }
