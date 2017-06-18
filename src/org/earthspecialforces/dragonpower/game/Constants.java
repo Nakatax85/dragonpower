@@ -15,6 +15,7 @@ public abstract class Constants {
     //Goku cloud width and height
     public static final int GOKU_HEIGHT = 49;
     public static final int GOKU_WIDTH = 61;
+    public static final int CLOUD = 8;
 
     public static final double JUMP_HEIGHT = GOKU_HEIGHT * 0.8;
 

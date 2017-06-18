@@ -44,11 +44,11 @@ public class Player implements Playable {
             distance = 0;
         }
         //bottom border
-        if (positionY > MAX_SCREEN_HEIGHT - GOKU_HEIGHT + PADDING) {
+        /*if (positionY > MAX_SCREEN_HEIGHT - GOKU_HEIGHT + PADDING) {
             positionY = MAX_SCREEN_HEIGHT - GOKU_HEIGHT + PADDING;
             distance = positionY - image.getY();
             alive = false;
-        }
+        }*/
         image.translate(0, distance);
         image.draw();
     }

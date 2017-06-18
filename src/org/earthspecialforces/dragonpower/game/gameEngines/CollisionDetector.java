@@ -1,10 +1,13 @@
 package org.earthspecialforces.dragonpower.game.gameEngines;
 
+import org.earthspecialforces.dragonpower.game.Constants;
 import org.earthspecialforces.dragonpower.game.gameObjects.Building;
 import org.earthspecialforces.dragonpower.game.gameObjects.GameObject;
 import org.earthspecialforces.dragonpower.game.gameObjects.Player;
 
 import java.util.LinkedList;
+
+import static org.earthspecialforces.dragonpower.game.Constants.*;
 
 /**
  * Created by njsilva on 11/06/2017.
@@ -27,6 +30,10 @@ public class CollisionDetector {
 
     public boolean hasCollided(GameObject gameObject, Player player) {
 
+        if (hitsGround(player)){
+            player.hasDied();
+        }
+
         if (frontX(player) < gameObject.getX()) {
             return false;
         }
@@ -41,6 +48,13 @@ public class CollisionDetector {
             if (topY(player) <= gapTopY(building) || bottomY(player) >= gapBotY(building)) {
             return true;
             }
+        }
+        return false;
+    }
+
+    private boolean hitsGround(Player player){
+        if (bottomY(player) > MAX_SCREEN_HEIGHT + CLOUD + PADDING){
+            return true;
         }
         return false;
     }
