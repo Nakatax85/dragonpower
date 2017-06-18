@@ -29,6 +29,9 @@ public class Game {
     private Screen screen;
     private Player player;
     private GameObject ground;
+    private int scoreInt;
+    private Text scoreText;
+    private Score score;
     private CollisionDetector collisionDetector;
 
     public Game(Player player) {
@@ -38,15 +41,20 @@ public class Game {
         this.player = player;
         objectsList = new LinkedList<>();
         collisionDetector = new CollisionDetector();
+        scoreInt = 0;
+        scoreText = new Text(200, 150, Integer.toString(scoreInt));
     }
 
     public void start(Player player, int delay) throws InterruptedException {
 
-        while (!k.isPressed() && screen instanceof StartScreen){
+        while (!k.isPressed() && screen instanceof StartScreen) {
             Thread.sleep(20);
         }
-        screen = new GameScreen();
         k.stopPressed();
+        if (screen instanceof StartScreen) {
+            screen = new GameScreen();
+        }
+        scoreText.draw();
 
         //TODO Create a GameObjects Factory
         Building building = new Building();
@@ -56,59 +64,71 @@ public class Game {
             // Pause for a while
             Thread.sleep(delay);
 
-            if(k.isPressed()){
+            if (k.isPressed()) {
                 player.jump();
                 k.stopPressed();
             }
-            if (collisionDetector.checkForCollisions(player,objectsList)){
+            if (collisionDetector.checkForCollisions(player, objectsList)) {
                 player.hasDied();
             }
             createNewObstacles();
             makePlayerFall();
             moveObstacles();
+            if (collisionDetector.playerHasClearedObstacle(objectsList.getFirst(),player)){
+                scoreInt++;
+                drawScore();
+            }
         }
         gameOver();
-        while (!k.isPressed()){
+        while (!k.isPressed()) {
             Thread.sleep(20);
         }
         initiateNewGame();
     }
 
-    private void gameOver(){
+    private void gameOver() {
         Picture gameOver = new Picture(290, 155, "imgs/Game Over.png");
-        Text spaceText = new Text(320,450, "<Press SPACE to RESTART GAME>");
+        Text spaceText = new Text(320, 450, "<Press SPACE to RESTART GAME>");
         gameOver.draw();
         spaceText.draw();
     }
 
-    private void initiateNewGame() throws InterruptedException{
+    private void initiateNewGame() throws InterruptedException {
         screen = new GameScreen();
         k = new KeyboardInput(screen);
-        physicsEngine = new PhysicsEngine();
         this.player = new Player();
         objectsList = new LinkedList<>();
-        collisionDetector = new CollisionDetector();
-        start(player,GAME_DELAY);
+        scoreInt = 0;
+        scoreText = new Text(200, 150, Integer.toString(scoreInt));
+        System.out.println("Before score draw");
+        scoreText.draw();
+        System.out.println("New Game started");
+        start(player, GAME_DELAY);
     }
 
     private void moveObstacles() {
-        //TODO: Verificar se pode ser alterado para for-each ou outra coisa qualquer
-        for (int i = 0; i <= objectsList.indexOf(objectsList.getLast()); i++) {
-            objectsList.get(i).moveLeft(HORIZONTAL_SPEED);
+
+        for (GameObject iterator : objectsList) {
+            iterator.moveLeft(HORIZONTAL_SPEED);
         }
     }
 
-    private void makePlayerFall(){
+    private void drawScore() {
+        scoreText.setText(Integer.toString(scoreInt));
+        scoreText.translate(0,0);
+    }
+
+    private void makePlayerFall() {
         physicsEngine.fall(player);
         player.draw(physicsEngine.getVerticalSpeed());
     }
 
-    private void createNewObstacles(){
-        if (objectsList.getLast().getX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE){
+    private void createNewObstacles() {
+        if (objectsList.getLast().getX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE) {
             objectsList.add(new Building());
         }
 
-        if (objectsList.getFirst().getX() < 0 - OBSTACLES_WIDTH){
+        if (objectsList.getFirst().getX() < 0 - OBSTACLES_WIDTH) {
             objectsList.removeFirst();
         }
     }

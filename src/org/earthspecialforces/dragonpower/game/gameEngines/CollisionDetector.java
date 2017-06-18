@@ -23,12 +23,19 @@ public class CollisionDetector {
             if(hasCollided(gameObject, player)){
                 return true;
             }
+
+        }
+        return false;
+    }
+
+    public boolean playerHasClearedObstacle(GameObject gameObject, Player player){
+        if (backX(player) == gameObject.getX()){
+            return true;
         }
         return false;
     }
 
     public boolean hasCollided(GameObject gameObject, Player player) {
-
 
         if (hitsGround(player)){
             player.hasDied();
