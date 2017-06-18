@@ -20,19 +20,19 @@ public class TestObstacle {
     private double positionX;
 
     public TestObstacle() {
-        positionX = MAX_SCREEN_WIDTH - WIDTH;
+        positionX = MAX_SCREEN_WIDTH - OBSTACLES_WIDTH;
 
         //TODO: Melhorar a geração do numero random
         Random random = new Random();
 
-        top = new Rectangle(positionX, PADDING, WIDTH, random.nextInt(MAX_SCREEN_HEIGHT - (int) GAP_HEIGHT));
+        top = new Rectangle(positionX, PADDING, OBSTACLES_WIDTH, random.nextInt(MAX_SCREEN_HEIGHT - (int) GAP_HEIGHT));
         top.setColor(Color.BLUE);
         top.fill();
 
-        gap = new Rectangle(positionX, PADDING + top.getHeight(), WIDTH, GAP_HEIGHT);
+        gap = new Rectangle(positionX, PADDING + top.getHeight(), OBSTACLES_WIDTH, GAP_HEIGHT);
 
         //TODO: Dar um PADDING ao bootom para criar a imagem do chão
-        bottom = new Rectangle(positionX, PADDING + top.getHeight() + gap.getHeight(), WIDTH, MAX_SCREEN_HEIGHT - gap.getHeight() - top.getHeight() + PADDING);
+        bottom = new Rectangle(positionX, PADDING + top.getHeight() + gap.getHeight(), OBSTACLES_WIDTH, MAX_SCREEN_HEIGHT - gap.getHeight() - top.getHeight() + PADDING);
         bottom.setColor(Color.BLUE);
         bottom.fill();
     }

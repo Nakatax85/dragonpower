@@ -1,8 +1,5 @@
 package org.earthspecialforces.dragonpower.game.gameObjects;
 
-import static org.earthspecialforces.dragonpower.game.Constants.MAX_SCREEN_WIDTH;
-import static org.earthspecialforces.dragonpower.game.Constants.WIDTH;
-
 /**
  * Created by joaorocha on 13/06/2017.
  */

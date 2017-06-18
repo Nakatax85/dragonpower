@@ -38,17 +38,12 @@ public class Player implements Playable {
 
     //TODO: Ver se faz sentido tirar o draw para outra class
     public void draw(double distance) {
-        //top border
+        //Player can't go higher than the top border
         if (positionY < 0) {
             positionY = 0;
             distance = 0;
         }
-        //bottom border
-        if (positionY > MAX_SCREEN_HEIGHT - GOKU_HEIGHT + PADDING) {
-            positionY = MAX_SCREEN_HEIGHT - GOKU_HEIGHT + PADDING;
-            distance = positionY - image.getY();
-            alive = false;
-        }
+
         image.translate(0, distance);
         image.draw();
     }

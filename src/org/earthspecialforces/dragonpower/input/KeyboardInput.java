@@ -35,6 +35,8 @@ public class KeyboardInput implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
 
+            pressed = true;
+            /*
             if(screen instanceof StartScreen){
                 screen.clear();
                 screen = new GameScreen();
@@ -44,6 +46,7 @@ public class KeyboardInput implements KeyboardHandler {
             }
             //TODO: Create an event to push ESC and exit the game
             //TODO: Create an event to push the key P to pause the game
+            */
         }
     }
 
@@ -58,8 +61,12 @@ public class KeyboardInput implements KeyboardHandler {
         keyboard.addEventListener(keyboardEvent);
     }
 
-    private boolean isPressed(){
+    public boolean isPressed(){
         return pressed;
+    }
+
+    public void stopPressed() {
+        this.pressed = false;
     }
 
     public Keyboard getKeyboard(){
