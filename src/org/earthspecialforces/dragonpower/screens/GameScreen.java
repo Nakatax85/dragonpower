@@ -11,7 +11,7 @@ import static org.earthspecialforces.dragonpower.game.Constants.PADDING;
 public class GameScreen extends Screen {
 
     private Picture ground;
-    private String groundImagePath = "imgs/Ground.png";
+    private String groundImagePath = "imgs/Ground.jpg";
 
     public GameScreen(){
 
