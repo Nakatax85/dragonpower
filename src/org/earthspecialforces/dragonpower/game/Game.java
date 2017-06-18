@@ -65,21 +65,18 @@ public class Game {
             createNewObstacles();
             makePlayerFall();
             moveObstacles();
-
         }
         gameOver();
-
-
     }
 
-    public void gameOver(){
+    private void gameOver(){
         Picture gameOver = new Picture(290, 155, "imgs/Game Over.png");
         Text spaceText = new Text(320,450, "<Press SPACE to RESTART GAME>");
         gameOver.draw();
         spaceText.draw();
     }
 
-    public void moveObstacles() {
+    private void moveObstacles() {
         ground.moveLeft(HORIZONTAL_SPEED);
 
         //TODO: Verificar se pode ser alterado para for-each ou outra coisa qualquer
@@ -88,15 +85,13 @@ public class Game {
         }
     }
 
-    public void makePlayerFall(){
+    private void makePlayerFall(){
         physicsEngine.fall(player);
         player.draw(physicsEngine.getVerticalSpeed());
     }
 
-    public void createNewObstacles(){
+    private void createNewObstacles(){
         if (objectsList.getLast().getX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE){
-
-            //System.out.println("Last Object X = " + objectsList.getLast().getX());
             objectsList.add(new Building());
         }
     }

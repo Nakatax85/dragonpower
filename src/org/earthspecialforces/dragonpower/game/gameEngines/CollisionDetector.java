@@ -1,6 +1,5 @@
 package org.earthspecialforces.dragonpower.game.gameEngines;
 
-import org.earthspecialforces.dragonpower.game.Constants;
 import org.earthspecialforces.dragonpower.game.gameObjects.Building;
 import org.earthspecialforces.dragonpower.game.gameObjects.GameObject;
 import org.earthspecialforces.dragonpower.game.gameObjects.Player;
@@ -29,6 +28,7 @@ public class CollisionDetector {
     }
 
     public boolean hasCollided(GameObject gameObject, Player player) {
+
 
         if (hitsGround(player)){
             player.hasDied();
