@@ -41,6 +41,8 @@ public class Game {
         objectsList = new LinkedList<>();
         collisionDetector = new CollisionDetector();
         scoreInt = 0;
+        scoreText = new Text(400, 100, Integer.toString(scoreInt));
+        scoreText.grow(20,25);
     }
 
     public void start(Player player, int delay) throws InterruptedException {
@@ -113,13 +115,11 @@ public class Game {
         }
     }
 
-    private void updateScore() {
-
-    }
-
     private void showScore() {
-        if (scoreInt == 0 && objectsList.getFirst().getX() >= MAX_SCREEN_WIDTH - OBSTACLES_WIDTH){
+        if (scoreInt >= 0 && objectsList.getLast().getX() >= MAX_SCREEN_WIDTH - OBSTACLES_WIDTH){
+            scoreText.delete();
             scoreText = new Text(400, 100, Integer.toString(scoreInt));
+            scoreText.grow(20,25);
             scoreText.draw();
             return;
         }
@@ -127,6 +127,7 @@ public class Game {
             scoreInt++;
             scoreText.setText(Integer.toString(scoreInt));
             scoreText.translate(0, 0);
+            return;
         }
 
     }
@@ -150,10 +151,12 @@ public class Game {
         k = new KeyboardInput(screen);
         this.player = new Player();
         objectsList = new LinkedList<>();
-        start(player, GAME_DELAY);
+        scoreText.delete();
         scoreInt = 0;
         scoreText = new Text(400, 100, Integer.toString(scoreInt));
+        scoreText.grow(20,25);
         scoreText.draw();
+        start(player, GAME_DELAY);
     }
 }
 
