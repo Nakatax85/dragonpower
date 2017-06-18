@@ -138,7 +138,7 @@ public class Game {
         Picture spaceStart = new Picture(230, 300, "imgs/PRESS SPACE TO START_B.png");
         gameOver.draw();
         spaceStart.draw();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
     }
 
     private void whenSpaceIsPressedRestartsGame() throws InterruptedException {
