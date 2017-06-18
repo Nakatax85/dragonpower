@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: 1.8.0_131 (Evil Corp) powered by #karBA$Hians 
+Main-Class: org.earthspecialforces.dragonpower.Main
+

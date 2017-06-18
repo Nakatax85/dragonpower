@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
-<project name="DragonPower" default="jarfile">
+<project name="dragonpower" default="jarfile">
 
     <!-- Initialize build properties  -->
     <target name="init" description="Initializes properties">
-        <property name="project.name" value="DragonPower" />
+        <property name="project.name" value="dragonpower" />
         <property name="src.dir" value="src" />
         <property name="main.class" value="org.earthspecialforces.dragonpower.Main" />
         <property name="build.dir" value="build" />
