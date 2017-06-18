@@ -38,27 +38,29 @@ public class Game {
         physicsEngine = new PhysicsEngine();
         this.player = player;
         objectsList = new LinkedList<>();
+        collisionDetector = new CollisionDetector();
     }
-
 
     public void start(Player player, int delay) throws InterruptedException {
 
-        while (k.getScreen() instanceof StartScreen) {
+        while (!k.isPressed() && screen instanceof StartScreen){
             Thread.sleep(20);
         }
-        screen = k.getScreen();
-        ground = new Ground();
+        screen = new GameScreen();
+        k.stopPressed();
 
-        collisionDetector = new CollisionDetector();
         //TODO Create a GameObjects Factory
         Building building = new Building();
         objectsList.add(building);
 
-        building.draw(0);
-
         while (player.isAlive()) {
             // Pause for a while
             Thread.sleep(delay);
+
+            if(k.isPressed()){
+                player.jump();
+                k.stopPressed();
+            }
             if (collisionDetector.checkForCollisions(player,objectsList)){
                 player.hasDied();
             }
@@ -67,6 +69,10 @@ public class Game {
             moveObstacles();
         }
         gameOver();
+        while (!k.isPressed()){
+            Thread.sleep(20);
+        }
+        initiateNewGame();
     }
 
     private void gameOver(){
@@ -76,8 +82,18 @@ public class Game {
         spaceText.draw();
     }
 
+    public void initiateNewGame() throws InterruptedException{
+        screen = new GameScreen();
+        k = new KeyboardInput(player, screen);
+        physicsEngine = new PhysicsEngine();
+        this.player = new Player();
+        objectsList = new LinkedList<>();
+        collisionDetector = new CollisionDetector();
+        start(player,GAME_DELAY);
+    }
+
     private void moveObstacles() {
-        ground.moveLeft(HORIZONTAL_SPEED);
+        //ground.moveLeft(HORIZONTAL_SPEED);
 
         //TODO: Verificar se pode ser alterado para for-each ou outra coisa qualquer
         for (int i = 0; i <= objectsList.indexOf(objectsList.getLast()); i++) {
@@ -94,6 +110,11 @@ public class Game {
         if (objectsList.getLast().getX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE){
             objectsList.add(new Building());
         }
+
+        if (objectsList.getFirst().getX() < 0 - OBSTACLES_WIDTH){
+            objectsList.removeFirst();
+        }
     }
+
 }
 
