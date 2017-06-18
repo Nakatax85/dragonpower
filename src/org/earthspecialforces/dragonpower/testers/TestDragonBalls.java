@@ -9,7 +9,9 @@ public class TestDragonBalls {
     public static void main(String[] args) {
 
         DragonBall dragonBall1 = new DragonBall(1);
+
         dragonBall1.draw(10);
+
 
 
     }

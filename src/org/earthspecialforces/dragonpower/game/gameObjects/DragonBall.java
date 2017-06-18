@@ -21,8 +21,9 @@ public class DragonBall extends GameObject implements Collectable {
     public DragonBall(int dragonBallNumber) {
         super(MAX_SCREEN_WIDTH - WIDTH, PADDING);
         this.dragonBallNumber = dragonBallNumber;
-        this.dragonBall = new Picture(super.getPositionX(), super.getPositionY(), dragonBallPicturePath);
-
+        setDragonBallPicturePath(dragonBallNumber);
+        this.dragonBall = new Picture(super.getX(), super.getPositionY(), dragonBallPicturePath);
+        dragonBall.grow(-19,-18.5);
 
     }
 
@@ -33,7 +34,7 @@ public class DragonBall extends GameObject implements Collectable {
     }
 
     public double getPositionX() {
-        return super.getPositionX();
+        return super.getX();
     }
 
     public void moveLeft(double distance) {
@@ -44,32 +45,33 @@ public class DragonBall extends GameObject implements Collectable {
     public void setDragonBallPicturePath(int number) {
         number = this.dragonBallNumber;
         switch (number) {
-            case 0:
+            case 1:
                 this.dragonBallPicturePath = "imgs/Ball_1.png";
                 break;
-            case 1:
+            case 2:
                 this.dragonBallPicturePath = "imgs/Ball_2.png";
                 break;
-            case 2:
+            case 3:
                 this.dragonBallPicturePath = "imgs/Ball_3.png";
                 break;
-            case 3:
+            case 4:
                 this.dragonBallPicturePath = "imgs/Ball_4.png";
                 break;
-            case 4:
+            case 5:
                 this.dragonBallPicturePath = "imgs/Ball_5.png";
                 break;
-            case 5:
+            case 6:
                 this.dragonBallPicturePath = "imgs/Ball_6.png";
                 break;
-            case 6:
+            case 7:
                 this.dragonBallPicturePath = "imgs/Ball_7.png";
                 break;
         }
-
-
     }
 
+    public int getDragonBallNumber() {
+        return dragonBallNumber;
+    }
 
     @Override
     public boolean isHit() {
