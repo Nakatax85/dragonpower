@@ -25,7 +25,7 @@ public class Player implements Playable {
     private boolean jumped;
 
     /**
-     *
+     * Initializes the player in its initial position (X and Y) and with the initial image representation
      */
     public Player() {
         positionY = PLAYER_INITIAL_Y;
@@ -34,7 +34,7 @@ public class Player implements Playable {
     }
 
     /**
-     *
+     * Makes the player jump by incrementing it's Y position by a given constant number
      */
     @Override
     public void jump() {
@@ -51,7 +51,7 @@ public class Player implements Playable {
     //TODO: Ver se faz sentido tirar o draw para outra class
 
     /**
-     *
+     * Draws the player
      * @param distance
      */
     public void draw(double distance) {
@@ -66,7 +66,7 @@ public class Player implements Playable {
     }
 
     /**
-     *
+     * Returns the player's Y coordinate
      * @return
      */
     public double getPositionY() {
@@ -74,7 +74,7 @@ public class Player implements Playable {
     }
 
     /**
-     *
+     * Updates the player's position
      * @param distance
      */
     public void updatePosition(double distance) {
@@ -82,7 +82,7 @@ public class Player implements Playable {
     }
 
     /**
-     *
+     * Returns the player's current image
      * @return
      */
     public Picture getGokuImage() {
@@ -90,7 +90,7 @@ public class Player implements Playable {
     }
 
     /**
-     *
+     * Changes the player's image to the image of the Super Sayan Goku
      * @return
      */
     public Picture getSuperSayanImage(){
@@ -100,7 +100,7 @@ public class Player implements Playable {
     }
 
     /**
-     *
+     * Changes the player's picture to the image of the Super Sayan 3 Goku
      * @return
      */
     public Picture getSuperSayan3Image(){
@@ -110,7 +110,7 @@ public class Player implements Playable {
     }
 
     /**
-     *
+     * Changes the player's picture to its initial image
      * @return
      */
     public Picture restartGokuImage(){
@@ -120,7 +120,7 @@ public class Player implements Playable {
     }
 
     /**
-     *
+     * Returns TRUE if the players has jumped, and FALSE if it didn't
      * @return
      */
     public boolean hasJumped() {
@@ -128,7 +128,7 @@ public class Player implements Playable {
     }
 
     /**
-     *
+     * Returns TRUE if the players is alive and FALSE if it died
      * @return
      */
     @Override
@@ -139,15 +139,15 @@ public class Player implements Playable {
     //TODO: Change this setter
 
     /**
+     * Sets the property jumped to false
      *
-     * @param jumped
      */
-    public void stopJumping(boolean jumped) {
-        this.jumped = jumped;
+    public void stopJumping() {
+        this.jumped = false;
     }
 
     /**
-     *
+     * Sets the property alive to false
      */
     public void hasDied() {
         alive = false;

@@ -12,10 +12,9 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Player player = new Player();
-        Game game = new Game(player);
+        Game game = new Game(new Player());
 
-        game.start(player, GAME_DELAY);
+        game.start(GAME_DELAY);
 
     }
 

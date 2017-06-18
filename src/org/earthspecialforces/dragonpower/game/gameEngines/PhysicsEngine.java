@@ -37,7 +37,7 @@ public class PhysicsEngine {
         }
         if (player.hasJumped()) {
             verticalSpeed = 0;
-            player.stopJumping(false);
+            player.stopJumping();
         }
 
         player.updatePosition(verticalSpeed);

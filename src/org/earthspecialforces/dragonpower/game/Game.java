@@ -4,7 +4,7 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.earthspecialforces.dragonpower.game.gameEngines.CollisionDetector;
 import org.earthspecialforces.dragonpower.game.gameEngines.PhysicsEngine;
-import org.earthspecialforces.dragonpower.game.gameObjects.Building;
+import org.earthspecialforces.dragonpower.game.gameObjects.Obstacle;
 import org.earthspecialforces.dragonpower.game.gameObjects.GameObject;
 import org.earthspecialforces.dragonpower.input.KeyboardInput;
 import org.earthspecialforces.dragonpower.game.screens.GameScreen;
@@ -22,16 +22,20 @@ public class Game {
 
     //TODO: Change this to a specific GameObjects_List to encapsulate our GameObjects List
     private LinkedList<GameObject> objectsList;
-
     private PhysicsEngine physicsEngine;
     private KeyboardInput k;
     private Screen screen;
     private Player player;
     private int scoreInt;
     private Text scoreText;
-    private Score score;
     private CollisionDetector collisionDetector;
 
+    /**
+     * Starts the game, instantiating all its properties and saving the player
+     * that is going to play the game
+     *
+     * @param player the player of this game
+     */
     public Game(Player player) {
         screen = new StartScreen();
         k = new KeyboardInput(screen);
@@ -44,9 +48,16 @@ public class Game {
         scoreText.grow(20,25);
     }
 
-    public void start(Player player, int delay) throws InterruptedException {
+    /**
+     * Starts the game
+     *
+     * @param delay
+     * @throws InterruptedException - Because it uses the Thread.sleep method to
+     * implement some delay while refreshing the game's screen.
+     */
+    public void start(int delay) throws InterruptedException {
 
-        whenSpaceIsPressedStartsGame();
+        whenSpaceIsPressedChangesToGameScreen();
 
         while (player.isAlive()) {
             // Pause for a while
@@ -60,11 +71,15 @@ public class Game {
             checkForCollisions();
         }
         gameOver();
-
         whenSpaceIsPressedRestartsGame();
     }
 
-    private void whenSpaceIsPressedStartsGame() throws InterruptedException {
+    /**
+     * Only when SPACE is pressed the GameScreen is initialized.
+     *
+     * @throws InterruptedException
+     */
+    private void whenSpaceIsPressedChangesToGameScreen() throws InterruptedException {
         if (screen instanceof StartScreen) {
             while (!k.isPressed()) {
                 Thread.sleep(20);
@@ -74,15 +89,25 @@ public class Game {
         }
     }
 
+    /**
+     * Creates the Obstacles of the game
+     * If there are no Obstacles yet, creates the first one and adds it to the Obstacles List.
+     *
+     * If the last object in the screen has reached the distance between Obstacles,
+     * (which is set in Constants.class), it creates a new Obstacle and adds it to the Obstacles List.
+     *
+     * When the first Obstacle of the list has left the Screen, it is removed from the Obstacles List.
+     *
+     */
     private void createNewObstacles() {
         //TODO Create a GameObjects Factory
         if (objectsList.size() <= 0) {
-            objectsList.add(new Building());
+            objectsList.add(new Obstacle());
             showScore();
             return;
         }
         if (objectsList.getLast().getX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE) {
-            objectsList.add(new Building());
+            objectsList.add(new Obstacle());
             showScore();
         }
 
@@ -91,6 +116,9 @@ public class Game {
         }
     }
 
+    /**
+     * Makes the player jump if the space is pressed.
+     */
     private void ifSpaceIsPressedPlayerJumps() {
         if (k.isPressed()) {
             player.jump();
@@ -98,23 +126,36 @@ public class Game {
         }
     }
 
+    /**
+     * Uses the CollisionDetector.class to check for collisions between
+     * the instance of Player and all Obstacles in the Screen.
+     */
     private void checkForCollisions() {
         if (collisionDetector.checkForCollisions(player, objectsList)) {
             player.hasDied();
         }
     }
 
+    /**
+     * Uses the PhysicsEngine.class to make the Player fall
+     */
     private void makePlayerFall() {
         physicsEngine.fall(player);
         player.draw(physicsEngine.getVerticalSpeed());
     }
 
+    /**
+     * Moves all Obstacles on the Screen (inside the Obstacles List)
+     */
     private void moveObstacles() {
         for (GameObject iterator : objectsList) {
             iterator.moveLeft(HORIZONTAL_SPEED);
         }
     }
 
+    /**
+     * Prints the score, and updates it when required
+     */
     private void showScore() {
         if (scoreInt >= 0 && objectsList.getLast().getX() >= MAX_SCREEN_WIDTH - OBSTACLES_WIDTH){
             scoreText.delete();
@@ -132,6 +173,11 @@ public class Game {
 
     }
 
+    /**
+     * Prints the Game Over screen
+     *
+     * @throws InterruptedException
+     */
     private void gameOver() throws InterruptedException{
         Picture gameOver = new Picture(250, 100, "imgs/Game Over.png");
         Picture spaceStart = new Picture(230, 300, "imgs/PRESS SPACE TO START_B.png");
@@ -140,6 +186,11 @@ public class Game {
         Thread.sleep(1000);
     }
 
+    /**
+     * Restarts the Game when SPACE is pressed
+     *
+     * @throws InterruptedException
+     */
     private void whenSpaceIsPressedRestartsGame() throws InterruptedException {
         while (!k.isPressed()) {
             Thread.sleep(20);
@@ -147,6 +198,11 @@ public class Game {
         restartGame();
     }
 
+    /**
+     * Sets all properties of Game.class to its initial values and starts a new game.
+     *
+     * @throws InterruptedException
+     */
     private void restartGame() throws InterruptedException {
         screen = new GameScreen();
         k = new KeyboardInput(screen);
@@ -157,7 +213,7 @@ public class Game {
         scoreText = new Text(400, 100, Integer.toString(scoreInt));
         scoreText.grow(20,25);
         scoreText.draw();
-        start(player, GAME_DELAY);
+        start(GAME_DELAY);
     }
 }
 

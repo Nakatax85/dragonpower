@@ -10,45 +10,46 @@ import static org.earthspecialforces.dragonpower.game.Constants.*;
  */
 
 /**
- * This class represents the Building subClass of the superClass GameObject
+ * This class represents the Obstacle subClass of the superClass GameObject
  */
-public class Building extends GameObject {
+public class Obstacle extends GameObject {
 
     /**
-     * Building properties
+     * Obstacle properties
      */
     private Rectangle top;
     private Rectangle gap;
     private Rectangle bottom;
-    private Color buildingColor = new Color(229, 127, 5);
+    private Color obstacleColor = new Color(229, 127, 5);
 
 
     /**
-     * Building constructor
+     * Obstacle constructor
      */
-    public Building(){
+    public Obstacle(){
         super(MAX_SCREEN_WIDTH - OBSTACLES_WIDTH, PADDING);
 
-
         //TODO: Melhorar a geração do numero random
+        //The top rectangle of the Obstacle
         top = new Rectangle(super.getX(), PADDING, OBSTACLES_WIDTH,RandomGen.randomIntBetweenMinAndMax(MAX_SCREEN_HEIGHT*2/9,MAX_SCREEN_HEIGHT*6/9));
-        top.setColor(buildingColor);
+        top.setColor(obstacleColor);
         top.fill();
 
+        //The rectangle of the gap
         gap = new Rectangle(super.getX(), PADDING + top.getHeight(), OBSTACLES_WIDTH, GAP_HEIGHT);
 
+        //The bottom rectangle of the obstacle
         bottom = new Rectangle(super.getX(), PADDING + top.getHeight() + gap.getHeight(), OBSTACLES_WIDTH, MAX_SCREEN_HEIGHT - gap.getHeight() - top.getHeight());
-        bottom.setColor(buildingColor);
+        bottom.setColor(obstacleColor);
         bottom.fill();
-
     }
 
     //TODO: Ver se faz sentido tirar o draw para outra class
 
     /**
-     *
+     * Draws this instance of obstacle
      * @param distance
-     * draws the Building's different instances
+     * draws the Obstacle's different instances
      */
     public void draw(double distance) {
         top.translate(-distance, 0);
@@ -56,7 +57,6 @@ public class Building extends GameObject {
         gap.translate(-distance, 0);
         bottom.translate(-distance, 0);
         bottom.fill();
-
     }
 
     /**
@@ -78,14 +78,7 @@ public class Building extends GameObject {
     }
 
     /**
-     *
-     * @return
-     */
-    public Rectangle getTop() {
-        return top;
-    }
-
-    /**
+     * Returns the rectangle in the middle, which is the gap of this Obstacle
      *
      * @return
      */
@@ -93,11 +86,4 @@ public class Building extends GameObject {
         return gap;
     }
 
-    /**
-     *
-     * @return
-     */
-    public Rectangle getBottom() {
-        return bottom;
-    }
 }

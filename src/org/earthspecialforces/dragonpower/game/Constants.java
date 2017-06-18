@@ -11,9 +11,6 @@ package org.earthspecialforces.dragonpower.game;
 
 public abstract class Constants {
 
-
-
-
     /**
      * Time delay of the game
      */

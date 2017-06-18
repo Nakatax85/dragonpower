@@ -9,6 +9,7 @@ package org.earthspecialforces.dragonpower.game.gameObjects;
  */
 public interface Crashable {
 
+    //TODO: Use this Interface to implement Beans and DragonBalls classes
     boolean isCollided();
 
 }

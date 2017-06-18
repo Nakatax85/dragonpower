@@ -1,6 +1,6 @@
 package org.earthspecialforces.dragonpower.game.gameEngines;
 
-import org.earthspecialforces.dragonpower.game.gameObjects.Building;
+import org.earthspecialforces.dragonpower.game.gameObjects.Obstacle;
 import org.earthspecialforces.dragonpower.game.gameObjects.GameObject;
 import org.earthspecialforces.dragonpower.game.Player;
 
@@ -36,16 +36,16 @@ public class CollisionDetector {
     }
 
     /**
-     * Checks if the player has passed one GameObjects of the type Building
+     * Checks if the player has passed one GameObjects of the type Obstacle
      * @param gameObject Receives one GameObject
      * @param player  Receives one player
      * @return        TRUE - if the players is ahead of the GameObject
      *                FALSE - if the player didn't reach the end of the Obstacle
      */
     public boolean playerHasClearedObstacle(GameObject gameObject, Player player) {
-        if (gameObject instanceof Building) {
+        if (gameObject instanceof Obstacle) {
 
-            if (backX(player) == gapFrontX(((Building) gameObject))) {
+            if (backX(player) == gapFrontX(((Obstacle) gameObject))) {
                 return true;
             }
         }
@@ -69,14 +69,14 @@ public class CollisionDetector {
             return false;
         }
 
-        if (gameObject instanceof Building) {
-            Building building = (Building) gameObject;
+        if (gameObject instanceof Obstacle) {
+            Obstacle obstacle = (Obstacle) gameObject;
 
-            if (backX(player) > gapFrontX(building)) {
+            if (backX(player) > gapFrontX(obstacle)) {
                 return false;
             }
 
-            if (topY(player) <= gapTopY(building) || bottomY(player) >= gapBotY(building)) {
+            if (topY(player) <= gapTopY(obstacle) || bottomY(player) >= gapBotY(obstacle)) {
                 return true;
             }
         }
@@ -137,33 +137,33 @@ public class CollisionDetector {
     }
 
     /**
-     * Calculates the Y coordinate of the front of the Building's gap
+     * Calculates the Y coordinate of the front of the Obstacle's gap
      *
-     * @param building
+     * @param obstacle
      * @return
      */
-    public double gapTopY(Building building) {
-        return building.getGap().getY();
+    public double gapTopY(Obstacle obstacle) {
+        return obstacle.getGap().getY();
     }
 
     /**
-     * Calculates the Y coordinate of the bottom of the Building's gap
+     * Calculates the Y coordinate of the bottom of the Obstacle's gap
      *
-     * @param building
+     * @param obstacle
      * @return
      */
-    public double gapBotY(Building building) {
-        return building.getGap().getY() + building.getGap().getHeight();
+    public double gapBotY(Obstacle obstacle) {
+        return obstacle.getGap().getY() + obstacle.getGap().getHeight();
     }
 
     /**
-     * Calculates the X coordinate of the front of the Building's gap
+     * Calculates the X coordinate of the front of the Obstacle's gap
      *
-     * @param building
+     * @param obstacle
      * @return
      */
-    public double gapFrontX(Building building) {
-        return building.getGap().getX() + building.getGap().getWidth();
+    public double gapFrontX(Obstacle obstacle) {
+        return obstacle.getGap().getX() + obstacle.getGap().getWidth();
     }
 
 }
