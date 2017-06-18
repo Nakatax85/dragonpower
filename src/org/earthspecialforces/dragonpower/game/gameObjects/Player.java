@@ -74,6 +74,12 @@ public class Player implements Playable {
         return gokuImage;
     }
 
+    public Picture restartGokuImage(){
+        gokuImage.delete();
+        gokuImage = new Picture(PLAYER_INITIAL_X,PLAYER_INITIAL_Y,gokuImagePath);
+        return gokuImage;
+    }
+
 
     public boolean hasJumped() {
         return jumped;
