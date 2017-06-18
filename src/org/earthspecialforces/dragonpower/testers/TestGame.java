@@ -57,7 +57,7 @@ public class TestGame {
             moveObstacles();
 
             //System.out.println("Player Y = " + player.getPositionY());
-            //System.out.println("Image Y = " + player.getImage().getY());
+            //System.out.println("Image Y = " + player.getGokuImage().getY());
             //System.out.println("Is Alive? " + player.isAlive());
         }
 
