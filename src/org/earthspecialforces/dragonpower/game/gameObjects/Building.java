@@ -1,5 +1,5 @@
 package org.earthspecialforces.dragonpower.game.gameObjects;
-
+import org.earthspecialforces.dragonpower.game.utils.RandomGen;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
@@ -30,33 +30,16 @@ public class Building extends GameObject {
 
 
         //TODO: Melhorar a geração do numero random
-        Random random = new Random();
-        top = new Rectangle(super.getX(), PADDING, OBSTACLES_WIDTH, random.nextInt(MAX_SCREEN_HEIGHT - (int) GAP_HEIGHT));
+        top = new Rectangle(super.getX(), PADDING, OBSTACLES_WIDTH,RandomGen.randomIntBetweenMinAndMax(MAX_SCREEN_HEIGHT*2/9,MAX_SCREEN_HEIGHT*6/9));
         top.setColor(Color.BLUE);
         top.fill();
 
         gap = new Rectangle(super.getX(), PADDING + top.getHeight(), OBSTACLES_WIDTH, GAP_HEIGHT);
 
-        //TODO: Dar um PADDING ao bottom para criar a imagem do chão
         bottom = new Rectangle(super.getX(), PADDING + top.getHeight() + gap.getHeight(), OBSTACLES_WIDTH, MAX_SCREEN_HEIGHT - gap.getHeight() - top.getHeight());
         bottom.setColor(Color.BLUE);
         bottom.fill();
 
-
-        /*
-        Random random = new Random();
-        topBuilding = new Picture(OBSTACLES_WIDTH,random.nextInt(MAX_SCREEN_HEIGHT - (int) GAP_HEIGHT));
-        topBuilding.translate(super.getX(),PADDING);
-        topBuilding.load(topBuildingPath);
-        topBuilding.grow(-57.5,(621-topBuilding.getHeight())/2);
-
-        gap = new Rectangle(super.getX(), PADDING + topBuilding.getHeight(), OBSTACLES_WIDTH, GAP_HEIGHT);
-
-        bottomBuilding = new Picture (OBSTACLES_WIDTH,MAX_SCREEN_HEIGHT - gap.getHeight() - topBuilding.getHeight() + PADDING);
-        bottomBuilding.translate(super.getX(),PADDING + topBuilding.getHeight() + gap.getHeight());
-        bottomBuilding.load(bottomBuildingPath);
-        bottomBuilding.grow(-57.5,(621-bottomBuilding.getHeight())/2);
-        */
     }
 
     //TODO: Ver se faz sentido tirar o draw para outra class
@@ -67,13 +50,6 @@ public class Building extends GameObject {
         bottom.translate(-distance, 0);
         bottom.fill();
 
-        /*
-        topBuilding.translate(-distance, 0);
-        topBuilding.draw();
-        gap.translate(-distance, 0);
-        bottomBuilding.translate(-distance, 0);
-        bottomBuilding.draw();
-        */
     }
 
     public double getX(){

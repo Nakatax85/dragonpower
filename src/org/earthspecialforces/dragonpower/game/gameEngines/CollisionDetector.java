@@ -23,12 +23,22 @@ public class CollisionDetector {
             if(hasCollided(gameObject, player)){
                 return true;
             }
+
+        }
+        return false;
+    }
+
+    public boolean playerHasClearedObstacle(GameObject gameObject, Player player){
+        if (gameObject instanceof Building) {
+
+            if (backX(player) == gapFrontX(((Building) gameObject))) {
+                return true;
+            }
         }
         return false;
     }
 
     public boolean hasCollided(GameObject gameObject, Player player) {
-
 
         if (hitsGround(player)){
             player.hasDied();
@@ -60,20 +70,20 @@ public class CollisionDetector {
     }
 
     public double bottomY(Player player) {
-        return player.getImage().getMaxY();
+        return player.getGokuImage().getMaxY();
     }
 
     public double topY(Player player) {
-        return player.getImage().getY();
+        return player.getGokuImage().getY();
     }
 
     public double backX(Player player) {
-        return player.getImage().getMaxX();
+        return player.getGokuImage().getMaxX();
     }
 
 
     public double frontX(Player player) {
-        return player.getImage().getMaxX() - 8;
+        return player.getGokuImage().getMaxX() - 8;
     }
 
 

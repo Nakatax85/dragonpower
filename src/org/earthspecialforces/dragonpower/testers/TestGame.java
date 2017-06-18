@@ -27,7 +27,7 @@ public class TestGame {
 
     public TestGame(Player player) {
         screen = new StartScreen();
-        k = new KeyboardInput(player, screen);
+        k = new KeyboardInput(screen);
         physicsEngine = new PhysicsEngine();
         this.player = player;
         obstaclesList = new LinkedList<>();
@@ -57,7 +57,7 @@ public class TestGame {
             moveObstacles();
 
             //System.out.println("Player Y = " + player.getPositionY());
-            //System.out.println("Image Y = " + player.getImage().getY());
+            //System.out.println("Image Y = " + player.getGokuImage().getY());
             //System.out.println("Is Alive? " + player.isAlive());
         }
 
