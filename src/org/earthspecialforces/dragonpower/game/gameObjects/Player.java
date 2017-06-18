@@ -63,11 +63,13 @@ public class Player implements Playable {
     }
 
     public Picture getSuperSayanImage(){
+        gokuImage.delete();
         gokuImage = new Picture(PLAYER_INITIAL_X,PLAYER_INITIAL_Y,superSayanImagePath);
         return gokuImage;
     }
 
     public Picture getSuperSayan3Image(){
+        gokuImage.delete();
         gokuImage = new Picture(PLAYER_INITIAL_X,PLAYER_INITIAL_Y,superSayan3ImagePath);
         return gokuImage;
     }
