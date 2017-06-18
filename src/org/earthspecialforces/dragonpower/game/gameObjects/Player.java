@@ -63,20 +63,20 @@ public class Player implements Playable {
     }
 
     public Picture getSuperSayanImage(){
-        gokuImage.delete();
-        gokuImage = new Picture(PLAYER_INITIAL_X,PLAYER_INITIAL_Y,superSayanImagePath);
+        gokuImage.load(superSayanImagePath);
+        gokuImage.translate(0,0);
         return gokuImage;
     }
 
     public Picture getSuperSayan3Image(){
-        gokuImage.delete();
-        gokuImage = new Picture(PLAYER_INITIAL_X,PLAYER_INITIAL_Y,superSayan3ImagePath);
+       gokuImage.load(superSayan3ImagePath);
+       gokuImage.translate(0,0);
         return gokuImage;
     }
 
     public Picture restartGokuImage(){
-        gokuImage.delete();
-        gokuImage = new Picture(PLAYER_INITIAL_X,PLAYER_INITIAL_Y,gokuImagePath);
+        gokuImage.load(gokuImagePath);
+        gokuImage.translate(0,0);
         return gokuImage;
     }
 
