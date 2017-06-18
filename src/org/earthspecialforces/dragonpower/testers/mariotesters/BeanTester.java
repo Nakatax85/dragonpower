@@ -1,14 +1,23 @@
 package org.earthspecialforces.dragonpower.testers.mariotesters;
 
+import org.academiadecodigo.simplegraphics.graphics.*;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.earthspecialforces.dragonpower.game.Constants;
 import org.earthspecialforces.dragonpower.game.gameObjects.Bean;
+
+
+import java.awt.*;
 
 /**
  * Created by codecadet on 15/06/17.
  */
 public class BeanTester {
     public static void main(String[] args) throws InterruptedException {
-        Bean bean = new Bean(300, 300, "/imgs/Bean.jpg");
+        Bean bean = new Bean(100, 100, "/Users/codecadet/dev/projects/dragonpower/resources/imgs/Senzu_Bean.png");
+        Rectangle pixel = new Rectangle(Constants.MAX_SCREEN_WIDTH,Constants.MAX_SCREEN_HEIGHT,1,1);
+        pixel.setColor(Color.WHITE);
+        pixel.draw();
         bean.draw();
 
         int delay = 300;
@@ -18,7 +27,7 @@ public class BeanTester {
             // Pause for a while
             Thread.sleep(delay);
 
-            bean.move(10,genDirection());
+
             bean.draw();
 
 

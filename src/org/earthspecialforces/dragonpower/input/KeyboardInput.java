@@ -9,6 +9,9 @@ import org.earthspecialforces.dragonpower.game.gameObjects.Player;
 import org.earthspecialforces.dragonpower.screens.GameScreen;
 import org.earthspecialforces.dragonpower.screens.Screen;
 import org.earthspecialforces.dragonpower.screens.StartScreen;
+import org.earthspecialforces.dragonpower.testers.TestObstacle;
+
+import java.util.LinkedList;
 
 
 /**
@@ -21,6 +24,9 @@ public class KeyboardInput implements KeyboardHandler {
     private boolean pressed = false;
 
     public KeyboardInput(Player player, Screen screen) {
+
+
+
         keyboard = new Keyboard(this);
         this.screen = screen;
 

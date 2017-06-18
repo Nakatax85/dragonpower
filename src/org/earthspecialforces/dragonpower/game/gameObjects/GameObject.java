@@ -118,11 +118,11 @@ public class GameObject {
 
     public void draw(){
         gameObjectImage.draw();
-        drawStart();
+       /* drawStart();
         drawLeft();
         drawRight();
         drawEnd();
-        drawCenter();
+        drawCenter();*/
     }
 
     public void drawStart(){
