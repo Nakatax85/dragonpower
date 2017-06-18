@@ -34,6 +34,7 @@ public class Game {
     private Score score;
     private CollisionDetector collisionDetector;
 
+
     public Game(Player player) {
         screen = new StartScreen();
         k = new KeyboardInput(screen);
