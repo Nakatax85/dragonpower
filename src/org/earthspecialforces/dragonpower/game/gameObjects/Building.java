@@ -3,8 +3,6 @@ import org.earthspecialforces.dragonpower.game.utils.RandomGen;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-import java.util.Random;
-
 import static org.earthspecialforces.dragonpower.game.Constants.*;
 
 /**
@@ -15,19 +13,23 @@ public class Building extends GameObject {
     private Rectangle top;
     private Rectangle gap;
     private Rectangle bottom;
+    private Color brown = new Color(71, 41, 0);
+
+
 
     public Building(){
         super(MAX_SCREEN_WIDTH - OBSTACLES_WIDTH, PADDING);
 
+
         //TODO: Melhorar a geração do numero random
         top = new Rectangle(super.getX(), PADDING, OBSTACLES_WIDTH,RandomGen.randomIntBetweenMinAndMax(MAX_SCREEN_HEIGHT*2/9,MAX_SCREEN_HEIGHT*6/9));
-        top.setColor(Color.BLUE);
+        top.setColor(brown);
         top.fill();
 
         gap = new Rectangle(super.getX(), PADDING + top.getHeight(), OBSTACLES_WIDTH, GAP_HEIGHT);
 
         bottom = new Rectangle(super.getX(), PADDING + top.getHeight() + gap.getHeight(), OBSTACLES_WIDTH, MAX_SCREEN_HEIGHT - gap.getHeight() - top.getHeight());
-        bottom.setColor(Color.BLUE);
+        bottom.setColor(brown);
         bottom.fill();
 
     }
@@ -53,7 +55,6 @@ public class Building extends GameObject {
 
     public Rectangle getTop() {
         return top;
-        //return topBuilding;
     }
 
     public Rectangle getGap() {
@@ -62,6 +63,5 @@ public class Building extends GameObject {
 
     public Rectangle getBottom() {
         return bottom;
-        //return bottomBuilding;
     }
 }
