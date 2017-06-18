@@ -79,7 +79,7 @@ public class Player implements Playable {
         this.jumped = jumped;
     }
 
-    public void isDead() {
+    public void hasDied() {
         alive = false;
     }
 }

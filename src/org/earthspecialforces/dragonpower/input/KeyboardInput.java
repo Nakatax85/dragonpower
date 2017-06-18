@@ -34,6 +34,7 @@ public class KeyboardInput implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
+
             if(screen instanceof StartScreen){
                 screen.clear();
                 screen = new GameScreen();

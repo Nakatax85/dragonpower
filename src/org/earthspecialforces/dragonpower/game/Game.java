@@ -8,14 +8,13 @@ import org.earthspecialforces.dragonpower.game.gameObjects.GameObject;
 import org.earthspecialforces.dragonpower.game.gameObjects.Ground;
 import org.earthspecialforces.dragonpower.game.gameObjects.Player;
 import org.earthspecialforces.dragonpower.input.KeyboardInput;
+import org.earthspecialforces.dragonpower.screens.GameScreen;
 import org.earthspecialforces.dragonpower.screens.Screen;
 import org.earthspecialforces.dragonpower.screens.StartScreen;
 
 import java.util.LinkedList;
 
-import static org.earthspecialforces.dragonpower.game.Constants.HORIZONTAL_SPEED;
-import static org.earthspecialforces.dragonpower.game.Constants.MAX_SCREEN_WIDTH;
-import static org.earthspecialforces.dragonpower.game.Constants.OBSTACLES_DISTANCE;
+import static org.earthspecialforces.dragonpower.game.Constants.*;
 
 /**
  * Created by njsilva on 11/06/2017.
@@ -59,17 +58,13 @@ public class Game {
         while (player.isAlive()) {
             // Pause for a while
             Thread.sleep(delay);
-            collisionDetector.checkForCollisions(player,objectsList);
-
+            if (collisionDetector.checkForCollisions(player,objectsList)){
+                player.hasDied();
+            }
             createNewObstacles();
-
             makePlayerFall();
-            //System.out.println("Index of getLast = " + objectsList.indexOf(objectsList.getLast()));
             moveObstacles();
 
-            //System.out.println("Player Y = " + player.getPositionY());
-            //System.out.println("Image Y = " + player.getImage().getY());
-            //System.out.println("Is Alive? " + player.isAlive());
         }
         Picture gameOver = new Picture(290, 155, "imgs/Game Over.png");
         gameOver.draw();

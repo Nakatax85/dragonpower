@@ -18,57 +18,61 @@ public class CollisionDetector {
     public boolean checkForCollisions(Player player, LinkedList<GameObject> gameObjectList) {
 
         for (GameObject gameObject : gameObjectList) {
-            checkAbove(gameObject, player);
-            //checkInFront(gameObject);
-            //checkBelow(gameObject);
-
+            if(hasCollided(gameObject, player)){
+                return true;
+            }
         }
         return false;
     }
 
-    public boolean checkAbove(GameObject gameObject, Player player) {
+    public boolean hasCollided(GameObject gameObject, Player player) {
 
-        if (maxX(player) < gameObject.getX()) {
+        if (frontX(player) < gameObject.getX()) {
             return false;
         }
 
         if (gameObject instanceof Building) {
             Building building = (Building) gameObject;
 
-            if (player.getImage().getX() > building.getGap().getX() + building.getGap().getWidth() ){
+            if (backX(player) > gapFrontX(building)) {
                 return false;
             }
 
-            if (maxY(player) < gapTopY(building) &&
-                    player.getImage().getMaxY() > gapBotY(building)) {
-
-                System.out.println("Player has collided with building.");
-                player.isDead();
-                return true;
+            if (topY(player) <= gapTopY(building) || bottomY(player) >= gapBotY(building)) {
+            return true;
             }
-
         }
-
-
         return false;
     }
 
-    public double maxY (Player player){
+    public double bottomY(Player player) {
         return player.getImage().getMaxY();
     }
 
-    public double maxX (Player player){
+    public double topY(Player player) {
+        return player.getImage().getY();
+    }
+
+    public double backX(Player player) {
+        return player.getImage().getMaxX();
+    }
+
+
+    public double frontX(Player player) {
         return player.getImage().getMaxX() - 8;
     }
 
 
-    public double gapTopY (Building building){
+    public double gapTopY(Building building) {
         return building.getGap().getY();
     }
 
-    public double gapBotY (Building building){
+    public double gapBotY(Building building) {
         return building.getGap().getY() + building.getGap().getHeight();
     }
 
+    public double gapFrontX(Building building) {
+        return building.getGap().getX() + building.getGap().getWidth();
+    }
 
 }
