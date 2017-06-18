@@ -6,7 +6,6 @@ import org.earthspecialforces.dragonpower.game.gameEngines.CollisionDetector;
 import org.earthspecialforces.dragonpower.game.gameEngines.PhysicsEngine;
 import org.earthspecialforces.dragonpower.game.gameObjects.Building;
 import org.earthspecialforces.dragonpower.game.gameObjects.GameObject;
-import org.earthspecialforces.dragonpower.game.gameObjects.Ground;
 import org.earthspecialforces.dragonpower.game.gameObjects.Player;
 import org.earthspecialforces.dragonpower.input.KeyboardInput;
 import org.earthspecialforces.dragonpower.screens.GameScreen;
