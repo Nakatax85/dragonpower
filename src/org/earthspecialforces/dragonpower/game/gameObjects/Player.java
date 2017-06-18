@@ -44,8 +44,8 @@ public class Player implements Playable {
             distance = 0;
         }
         //bottom border
-        if (positionY > MAX_SCREEN_HEIGHT - GOKU_HEIGHT) {
-            positionY = MAX_SCREEN_HEIGHT - GOKU_HEIGHT;
+        if (positionY > MAX_SCREEN_HEIGHT - GOKU_HEIGHT + PADDING) {
+            positionY = MAX_SCREEN_HEIGHT - GOKU_HEIGHT + PADDING;
             distance = positionY - image.getY();
             alive = false;
         }
@@ -77,5 +77,9 @@ public class Player implements Playable {
     //TODO: Change this setter
     public void setJumped(boolean jumped) {
         this.jumped = jumped;
+    }
+
+    public void hasDied() {
+        alive = false;
     }
 }

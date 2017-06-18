@@ -5,9 +5,12 @@ package org.earthspecialforces.dragonpower.game;
  */
 public abstract class Constants {
 
+    //Delay of game
+    public static final int GAME_DELAY = 3;
+
     //Screen maximum width and height
     public static final int MAX_SCREEN_WIDTH = 800;
-    public static final int MAX_SCREEN_HEIGHT = 800;
+    public static final int MAX_SCREEN_HEIGHT = 672;
 
     //Goku cloud width and height
     public static final int GOKU_HEIGHT = 49;
@@ -19,10 +22,10 @@ public abstract class Constants {
     public static final int PADDING = 10;
 
     //Player's initial position
-    public static final int PLAYER_INITIAL_X = 110;
-    public static final int PLAYER_INITIAL_Y = 110;
+    public static final int PLAYER_INITIAL_X = 200;
+    public static final int PLAYER_INITIAL_Y = 300;
     public static final int WIDTH = 75;
-    public static final double GAP_HEIGHT = GOKU_HEIGHT * 1.5;
+    public static final double GAP_HEIGHT = GOKU_HEIGHT * 2.5;
 
     //Obstacles constants
     //Distance between obstacles
@@ -31,8 +34,8 @@ public abstract class Constants {
 
     //Physics Engine - constants
     public static final int TERMINAL_VELOCITY = 50;
-    public static final double GRAVITY = 0.8;
-    public static final double HORIZONTAL_SPEED = 5;
+    public static final double GRAVITY = 0.008;
+    public static final double HORIZONTAL_SPEED = 1;
 
     public enum Direction{
         LEFT,
