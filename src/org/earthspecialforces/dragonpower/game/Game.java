@@ -28,12 +28,10 @@ public class Game {
     private KeyboardInput k;
     private Screen screen;
     private Player player;
-    private GameObject ground;
     private int scoreInt;
     private Text scoreText;
     private Score score;
     private CollisionDetector collisionDetector;
-
 
     public Game(Player player) {
         screen = new StartScreen();
@@ -42,6 +40,7 @@ public class Game {
         this.player = player;
         objectsList = new LinkedList<>();
         collisionDetector = new CollisionDetector();
+        scoreInt = 0;
     }
 
     public void start(Player player, int delay) throws InterruptedException {
@@ -53,16 +52,16 @@ public class Game {
         if (screen instanceof StartScreen) {
             screen = new GameScreen();
         }
+
         score();
 
         //TODO Create a GameObjects Factory
-        Building building = new Building();
-        objectsList.add(building);
 
         while (player.isAlive()) {
             // Pause for a while
             Thread.sleep(delay);
 
+            createNewObstacles();
             if (k.isPressed()) {
                 player.jump();
                 k.stopPressed();
@@ -70,7 +69,8 @@ public class Game {
             if (collisionDetector.checkForCollisions(player, objectsList)) {
                 player.hasDied();
             }
-            createNewObstacles();
+
+
             makePlayerFall();
             moveObstacles();
             if (collisionDetector.playerHasClearedObstacle(objectsList.getFirst(),player)){
@@ -98,8 +98,6 @@ public class Game {
 
         this.player = new Player();
         objectsList = new LinkedList<>();
-        System.out.println("Before score draw");
-        System.out.println("New Game started");
         start(player, GAME_DELAY);
     }
 
@@ -127,6 +125,10 @@ public class Game {
     }
 
     private void createNewObstacles() {
+        if (objectsList.size() <= 0){
+            objectsList.add(new Building());
+            return;
+        }
         if (objectsList.getLast().getX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE) {
             objectsList.add(new Building());
         }

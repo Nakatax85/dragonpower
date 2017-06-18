@@ -16,18 +16,8 @@ public class Building extends GameObject {
     private Rectangle gap;
     private Rectangle bottom;
 
-    /*
-    private Picture topBuilding;
-    private String topBuildingPath = "imgs/Building_2_top.png";
-    private Rectangle gap;
-    private Picture bottomBuilding;
-    private String bottomBuildingPath = "imgs/Building_2_bottom.png";
-    */
-
-
     public Building(){
         super(MAX_SCREEN_WIDTH - OBSTACLES_WIDTH, PADDING);
-
 
         //TODO: Melhorar a geração do numero random
         top = new Rectangle(super.getX(), PADDING, OBSTACLES_WIDTH,RandomGen.randomIntBetweenMinAndMax(MAX_SCREEN_HEIGHT*2/9,MAX_SCREEN_HEIGHT*6/9));
