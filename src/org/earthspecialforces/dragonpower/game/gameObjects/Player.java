@@ -1,7 +1,6 @@
 package org.earthspecialforces.dragonpower.game.gameObjects;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.earthspecialforces.dragonpower.game.Constants;
 
 import static org.earthspecialforces.dragonpower.game.Constants.*;
 
@@ -11,16 +10,19 @@ import static org.earthspecialforces.dragonpower.game.Constants.*;
 public class Player implements Playable {
 
 
-    String imagePath = "imgs/Goku_Cloud_1.png";
+    String gokuImagePath = "imgs/Goku_Cloud_1.png";
+    String superSayanImagePath = "imgs/supersayan_head.png";
+    String superSayan3ImagePath = "imgs/supersayan3_head.png";
 
-    private Picture image;
+
+    private Picture gokuImage;
     private double positionY;
     private boolean alive;
     private boolean jumped;
 
     public Player() {
         positionY = PLAYER_INITIAL_Y;
-        image = new Picture(PLAYER_INITIAL_X, PLAYER_INITIAL_Y, imagePath);
+        gokuImage = new Picture(PLAYER_INITIAL_X, PLAYER_INITIAL_Y, gokuImagePath);
         alive = true;
     }
 
@@ -29,8 +31,8 @@ public class Player implements Playable {
         if (alive) {
             if (positionY > JUMP_HEIGHT) {
                 positionY -= JUMP_HEIGHT;
-                image.translate(0, -JUMP_HEIGHT);
-                image.draw();
+                gokuImage.translate(0, -JUMP_HEIGHT);
+                gokuImage.draw();
                 jumped = true;
             }
         }
@@ -44,8 +46,8 @@ public class Player implements Playable {
             distance = 0;
         }
 
-        image.translate(0, distance);
-        image.draw();
+        gokuImage.translate(0, distance);
+        gokuImage.draw();
     }
 
     public double getPositionY() {
@@ -56,9 +58,28 @@ public class Player implements Playable {
         this.positionY = this.positionY + distance;
     }
 
-    public Picture getImage() {
-        return image;
+    public Picture getGokuImage() {
+        return gokuImage;
     }
+
+    public Picture getSuperSayanImage(){
+        gokuImage.delete();
+        gokuImage = new Picture(PLAYER_INITIAL_X,PLAYER_INITIAL_Y,superSayanImagePath);
+        return gokuImage;
+    }
+
+    public Picture getSuperSayan3Image(){
+        gokuImage.delete();
+        gokuImage = new Picture(PLAYER_INITIAL_X,PLAYER_INITIAL_Y,superSayan3ImagePath);
+        return gokuImage;
+    }
+
+    public Picture restartGokuImage(){
+        gokuImage.delete();
+        gokuImage = new Picture(PLAYER_INITIAL_X,PLAYER_INITIAL_Y,gokuImagePath);
+        return gokuImage;
+    }
+
 
     public boolean hasJumped() {
         return jumped;

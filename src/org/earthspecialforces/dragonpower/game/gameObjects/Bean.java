@@ -11,8 +11,8 @@ public class Bean {
     private boolean hit;
     private int value;
 
-    public Bean (int x, int y,String imagePath){
-        super(x,y,new Picture(x,y,imagePath));
+    public Bean (int x, int y,String gokuImagePath){
+        super(x,y,new Picture(x,y,gokuImagePath));
         collected = false;
         hit = false;
         value = 1;
