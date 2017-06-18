@@ -41,8 +41,6 @@ public class Game {
         this.player = player;
         objectsList = new LinkedList<>();
         collisionDetector = new CollisionDetector();
-        scoreInt = 0;
-        scoreText = new Text(200, 150, Integer.toString(scoreInt));
     }
 
     public void start(Player player, int delay) throws InterruptedException {
@@ -54,7 +52,7 @@ public class Game {
         if (screen instanceof StartScreen) {
             screen = new GameScreen();
         }
-        scoreText.draw();
+        score();
 
         //TODO Create a GameObjects Factory
         Building building = new Building();
@@ -87,23 +85,27 @@ public class Game {
     }
 
     private void gameOver() {
-        Picture gameOver = new Picture(290, 155, "imgs/Game Over.png");
-        Text spaceText = new Text(320, 450, "<Press SPACE to RESTART GAME>");
+        Picture gameOver = new Picture(250, 100, "imgs/Game Over.png");
+        Picture spaceStart = new Picture(230,300,"imgs/PRESS SPACE TO START_B.png");
         gameOver.draw();
-        spaceText.draw();
+        spaceStart.draw();
     }
 
     private void initiateNewGame() throws InterruptedException {
         screen = new GameScreen();
         k = new KeyboardInput(screen);
+
         this.player = new Player();
         objectsList = new LinkedList<>();
-        scoreInt = 0;
-        scoreText = new Text(200, 150, Integer.toString(scoreInt));
         System.out.println("Before score draw");
-        scoreText.draw();
         System.out.println("New Game started");
         start(player, GAME_DELAY);
+    }
+
+    private void score(){
+        scoreInt = 0;
+        scoreText = new Text(400, 100, Integer.toString(scoreInt));
+        scoreText.draw();
     }
 
     private void moveObstacles() {
