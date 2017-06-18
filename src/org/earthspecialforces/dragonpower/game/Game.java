@@ -61,6 +61,7 @@ public class Game {
             checkForCollisions();
         }
         gameOver();
+
         whenSpaceIsPressedRestartsGame();
     }
 
@@ -132,11 +133,12 @@ public class Game {
 
     }
 
-    private void gameOver() {
+    private void gameOver() throws InterruptedException{
         Picture gameOver = new Picture(250, 100, "imgs/Game Over.png");
         Picture spaceStart = new Picture(230, 300, "imgs/PRESS SPACE TO START_B.png");
         gameOver.draw();
         spaceStart.draw();
+        Thread.sleep(2000);
     }
 
     private void whenSpaceIsPressedRestartsGame() throws InterruptedException {
