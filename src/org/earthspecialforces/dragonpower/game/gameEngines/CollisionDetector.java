@@ -29,8 +29,11 @@ public class CollisionDetector {
     }
 
     public boolean playerHasClearedObstacle(GameObject gameObject, Player player){
-        if (backX(player) == gameObject.getX()){
-            return true;
+        if (gameObject instanceof Building) {
+
+            if (backX(player) == gapFrontX(((Building) gameObject))) {
+                return true;
+            }
         }
         return false;
     }
