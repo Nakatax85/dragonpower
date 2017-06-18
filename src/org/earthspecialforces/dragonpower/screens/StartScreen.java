@@ -13,10 +13,13 @@ public class StartScreen extends Screen {
 
     private Text startText;
     private Text spaceText;
+    private Picture logo;
+    private Picture gokuStart;
 
     public StartScreen(){
-        super(new Picture(PADDING,PADDING, "imgs/StartScreen.jpg"));
-        startText = new Text(330,425,"Welcome to Dragon Power!");
+        super(new Picture(PADDING,PADDING, "imgs/Start_Screen_bckg.jpg"));
+        logo = new Picture(280,200,"imgs/DP_logo.png");
+        startText = new Text(320,425,"Welcome to Dragon Power!");
         spaceText = new Text(320,450, "<Press SPACE to START GAME>");
         drawBackground();
     }
@@ -24,7 +27,8 @@ public class StartScreen extends Screen {
     @Override
     public void drawBackground(){
         super.drawBackground();
-        startText.draw();
+        logo.draw();
+        getStartText();
         spaceText.draw();
     }
 
@@ -33,5 +37,14 @@ public class StartScreen extends Screen {
         super.clear();
         startText.delete();
         spaceText.delete();
+    }
+
+    public void getStartText() {
+        startText.setColor(Color.RED);
+        startText.draw();
+    }
+
+    public Text getSpaceText() {
+        return spaceText;
     }
 }
