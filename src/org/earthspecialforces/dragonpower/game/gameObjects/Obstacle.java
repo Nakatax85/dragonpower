@@ -24,7 +24,7 @@ public class Obstacle extends GameObject {
 
 
     /**
-     * Obstacle constructor
+     * Obstacle's constructor
      */
     public Obstacle(){
         super(MAX_SCREEN_WIDTH - OBSTACLES_WIDTH, PADDING);
@@ -47,9 +47,9 @@ public class Obstacle extends GameObject {
     //TODO: Ver se faz sentido tirar o draw para outra class
 
     /**
-     * Draws this instance of obstacle
+     * Draws the obstacle on the Simple Graphics Library's Screen
+     *
      * @param distance
-     * draws the Obstacle's different instances
      */
     public void draw(double distance) {
         top.translate(-distance, 0);

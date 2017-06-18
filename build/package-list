@@ -1,0 +1,9 @@
+org.earthspecialforces.dragonpower
+org.earthspecialforces.dragonpower.game
+org.earthspecialforces.dragonpower.game.gameEngines
+org.earthspecialforces.dragonpower.game.gameObjects
+org.earthspecialforces.dragonpower.game.screens
+org.earthspecialforces.dragonpower.input
+org.earthspecialforces.dragonpower.testers
+org.earthspecialforces.dragonpower.testers.nelsontesters
+org.earthspecialforces.dragonpower.utils
