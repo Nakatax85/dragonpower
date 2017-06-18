@@ -1,4 +1,4 @@
-package org.earthspecialforces.dragonpower.testers.mariotesters;
+package org.earthspecialforces.dragonpower.testers;
 
 import org.earthspecialforces.dragonpower.game.Constants;
 import org.earthspecialforces.dragonpower.game.gameObjects.Bean;

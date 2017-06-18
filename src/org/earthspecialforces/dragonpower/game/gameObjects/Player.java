@@ -5,7 +5,11 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 import static org.earthspecialforces.dragonpower.game.Constants.*;
 
 /**
- * Created by joaorocha on 13/06/2017.
+ * Created by DragonPowerTeam on 13/06/2017.
+ */
+
+/**
+ * This class represents the Player and implements the interface Playable
  */
 public class Player implements Playable {
 
@@ -20,12 +24,18 @@ public class Player implements Playable {
     private boolean alive;
     private boolean jumped;
 
+    /**
+     *
+     */
     public Player() {
         positionY = PLAYER_INITIAL_Y;
         gokuImage = new Picture(PLAYER_INITIAL_X, PLAYER_INITIAL_Y, gokuImagePath);
         alive = true;
     }
 
+    /**
+     *
+     */
     @Override
     public void jump() {
         if (alive) {
@@ -39,6 +49,11 @@ public class Player implements Playable {
     }
 
     //TODO: Ver se faz sentido tirar o draw para outra class
+
+    /**
+     *
+     * @param distance
+     */
     public void draw(double distance) {
         //Player can't go higher than the top border
         if (positionY < 0) {
@@ -50,51 +65,90 @@ public class Player implements Playable {
         gokuImage.draw();
     }
 
+    /**
+     *
+     * @return
+     */
     public double getPositionY() {
         return positionY;
     }
 
+    /**
+     *
+     * @param distance
+     */
     public void updatePosition(double distance) {
         this.positionY = this.positionY + distance;
     }
 
+    /**
+     *
+     * @return
+     */
     public Picture getGokuImage() {
         return gokuImage;
     }
 
+    /**
+     *
+     * @return
+     */
     public Picture getSuperSayanImage(){
         gokuImage.load(superSayanImagePath);
         gokuImage.translate(0,0);
         return gokuImage;
     }
 
+    /**
+     *
+     * @return
+     */
     public Picture getSuperSayan3Image(){
        gokuImage.load(superSayan3ImagePath);
        gokuImage.translate(0,0);
         return gokuImage;
     }
 
+    /**
+     *
+     * @return
+     */
     public Picture restartGokuImage(){
         gokuImage.load(gokuImagePath);
         gokuImage.translate(0,0);
         return gokuImage;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public boolean hasJumped() {
         return jumped;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean isAlive() {
         return alive;
     }
 
     //TODO: Change this setter
+
+    /**
+     *
+     * @param jumped
+     */
     public void setJumped(boolean jumped) {
         this.jumped = jumped;
     }
 
+    /**
+     *
+     */
     public void hasDied() {
         alive = false;
     }

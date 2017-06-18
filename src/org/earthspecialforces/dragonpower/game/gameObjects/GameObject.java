@@ -1,7 +1,11 @@
 package org.earthspecialforces.dragonpower.game.gameObjects;
 
 /**
- * Created by joaorocha on 13/06/2017.
+ * Created by DragonPowerTeam on 13/06/2017.
+ */
+
+/**
+ * This class represents the GameObject that will act as superClass
  */
 public class GameObject {
 

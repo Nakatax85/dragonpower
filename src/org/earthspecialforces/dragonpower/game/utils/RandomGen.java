@@ -3,8 +3,13 @@ package org.earthspecialforces.dragonpower.game.utils;
 import java.util.Random;
 
 /**
- * Created by joaorocha on 26/05/2017.
+ * Created by DragonPowerTeam on 26/05/2017.
  */
+
+/**
+ * This class represents a Random Generator
+ */
+
 public class RandomGen {
 
     public static int randomIntBetweenMinAndMax (int min, int max) {
