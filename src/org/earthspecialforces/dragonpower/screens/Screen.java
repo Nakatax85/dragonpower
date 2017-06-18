@@ -14,6 +14,10 @@ public class Screen {
         this.background = background;
     }
 
+    public Screen() {
+
+    }
+
     public void clear(){
         background.delete();
     }

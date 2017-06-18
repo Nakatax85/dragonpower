@@ -1,5 +1,6 @@
 package org.earthspecialforces.dragonpower.game;
 
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.earthspecialforces.dragonpower.game.gameEngines.CollisionDetector;
 import org.earthspecialforces.dragonpower.game.gameEngines.PhysicsEngine;
@@ -66,8 +67,16 @@ public class Game {
             moveObstacles();
 
         }
+        gameOver();
+
+
+    }
+
+    public void gameOver(){
         Picture gameOver = new Picture(290, 155, "imgs/Game Over.png");
+        Text spaceText = new Text(320,450, "<Press SPACE to RESTART GAME>");
         gameOver.draw();
+        spaceText.draw();
     }
 
     public void moveObstacles() {
