@@ -19,7 +19,7 @@ public class DragonBall extends GameObject implements Collectable {
 
 
     public DragonBall(int dragonBallNumber) {
-        super(MAX_SCREEN_WIDTH - WIDTH, PADDING);
+        super(MAX_SCREEN_WIDTH - OBSTACLES_WIDTH, PADDING);
         this.dragonBallNumber = dragonBallNumber;
         setDragonBallPicturePath(dragonBallNumber);
         this.dragonBall = new Picture(super.getX(), super.getPositionY(), dragonBallPicturePath);
