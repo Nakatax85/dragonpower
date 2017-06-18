@@ -45,70 +45,67 @@ public class Game {
 
     public void start(Player player, int delay) throws InterruptedException {
 
-        while (!k.isPressed() && screen instanceof StartScreen) {
-            Thread.sleep(20);
-        }
-        k.stopPressed();
-        if (screen instanceof StartScreen) {
-            screen = new GameScreen();
-        }
-
-        //TODO Create a GameObjects Factory
+        whenSpaceIsPressedStartsGame();
 
         while (player.isAlive()) {
             // Pause for a while
             Thread.sleep(delay);
 
             createNewObstacles();
-
-            if (k.isPressed()) {
-                player.jump();
-                k.stopPressed();
-            }
-
-            checkForCollisions();
-
+            ifSpaceIsPressedPlayerJumps();
             makePlayerFall();
             moveObstacles();
             updateScore();
-
+            checkForCollisions();
         }
         gameOver();
-        while (!k.isPressed()) {
-            Thread.sleep(20);
-        }
-        restartGame();
+        
+        whenSpaceIsPressedRestartsGame();
     }
 
-    private void gameOver() {
-        Picture gameOver = new Picture(250, 100, "imgs/Game Over.png");
-        Picture spaceStart = new Picture(230,300,"imgs/PRESS SPACE TO START_B.png");
-        gameOver.draw();
-        spaceStart.draw();
-    }
-
-    public void updateScore(){
-        if (collisionDetector.playerHasClearedObstacle(objectsList.getFirst(),player)){
-            scoreInt++;
-            drawScore();
+    private void whenSpaceIsPressedStartsGame() throws InterruptedException {
+        if (screen instanceof StartScreen) {
+            while (!k.isPressed()) {
+                Thread.sleep(20);
+            }
+            screen = new GameScreen();
+            k.stopPressed();
         }
     }
 
-    private void restartGame() throws InterruptedException {
-        screen = new GameScreen();
-        k = new KeyboardInput(screen);
-        this.player = new Player();
-        objectsList = new LinkedList<>();
-        start(player, GAME_DELAY);
-        scoreInt = 0;
+    private void createNewObstacles() {
+        //TODO Create a GameObjects Factory
+        if (objectsList.size() <= 0) {
+            objectsList.add(new Building());
+            showScore();
+            return;
+        }
+        if (objectsList.getLast().getX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE) {
+            objectsList.add(new Building());
+            showScore();
+        }
+
+        if (objectsList.getFirst().getX() < 0 - OBSTACLES_WIDTH) {
+            objectsList.removeFirst();
+        }
     }
 
-    private void score(){
-        if (scoreInt > 0) {
-            scoreText.delete();
+    private void ifSpaceIsPressedPlayerJumps() {
+        if (k.isPressed()) {
+            player.jump();
+            k.stopPressed();
         }
-        scoreText = new Text(400, 100, Integer.toString(scoreInt));
-        scoreText.draw();
+    }
+
+    private void checkForCollisions() {
+        if (collisionDetector.checkForCollisions(player, objectsList)) {
+            player.hasDied();
+        }
+    }
+
+    private void makePlayerFall() {
+        physicsEngine.fall(player);
+        player.draw(physicsEngine.getVerticalSpeed());
     }
 
     private void moveObstacles() {
@@ -118,37 +115,45 @@ public class Game {
         }
     }
 
-    private void drawScore() {
-        scoreText.setText(Integer.toString(scoreInt));
-        scoreText.translate(0,0);
-    }
-
-    private void makePlayerFall() {
-        physicsEngine.fall(player);
-        player.draw(physicsEngine.getVerticalSpeed());
-    }
-
-    private void checkForCollisions(){
-        if (collisionDetector.checkForCollisions(player, objectsList)) {
-            player.hasDied();
+    private void updateScore() {
+        if (collisionDetector.playerHasClearedObstacle(objectsList.getFirst(), player)) {
+            scoreInt++;
+            scoreText.setText(Integer.toString(scoreInt));
+            scoreText.translate(0, 0);
         }
     }
 
-    private void createNewObstacles() {
-        if (objectsList.size() <= 0){
-            objectsList.add(new Building());
-            score();
-            return;
+    private void showScore() {
+        if (scoreInt > 0) {
+            scoreText.delete();
         }
-        if (objectsList.getLast().getX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE) {
-            objectsList.add(new Building());
-            score();
-        }
-
-        if (objectsList.getFirst().getX() < 0 - OBSTACLES_WIDTH) {
-            objectsList.removeFirst();
-        }
+        scoreText = new Text(400, 100, Integer.toString(scoreInt));
+        scoreText.draw();
     }
 
+    private void gameOver() {
+        Picture gameOver = new Picture(250, 100, "imgs/Game Over.png");
+        Picture spaceStart = new Picture(230, 300, "imgs/PRESS SPACE TO START_B.png");
+        gameOver.draw();
+        spaceStart.draw();
+    }
+
+    private void whenSpaceIsPressedRestartsGame() throws InterruptedException {
+        while (!k.isPressed()) {
+            Thread.sleep(20);
+        }
+        restartGame();
+    }
+
+    private void restartGame() throws InterruptedException {
+        screen = new GameScreen();
+        k = new KeyboardInput(screen);
+        this.player = new Player();
+        objectsList = new LinkedList<>();
+        start(player, GAME_DELAY);
+        scoreInt = 0;
+        scoreText = new Text(400, 100, Integer.toString(scoreInt));
+        scoreText.draw();
+    }
 }
 
