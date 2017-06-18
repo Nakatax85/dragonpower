@@ -53,8 +53,6 @@ public class Game {
             screen = new GameScreen();
         }
 
-        score();
-
         //TODO Create a GameObjects Factory
 
         while (player.isAlive()) {
@@ -62,27 +60,24 @@ public class Game {
             Thread.sleep(delay);
 
             createNewObstacles();
+
             if (k.isPressed()) {
                 player.jump();
                 k.stopPressed();
             }
-            if (collisionDetector.checkForCollisions(player, objectsList)) {
-                player.hasDied();
-            }
 
+            checkForCollisions();
 
             makePlayerFall();
             moveObstacles();
-            if (collisionDetector.playerHasClearedObstacle(objectsList.getFirst(),player)){
-                scoreInt++;
-                drawScore();
-            }
+            updateScore();
+
         }
         gameOver();
         while (!k.isPressed()) {
             Thread.sleep(20);
         }
-        initiateNewGame();
+        restartGame();
     }
 
     private void gameOver() {
@@ -92,17 +87,26 @@ public class Game {
         spaceStart.draw();
     }
 
-    private void initiateNewGame() throws InterruptedException {
+    public void updateScore(){
+        if (collisionDetector.playerHasClearedObstacle(objectsList.getFirst(),player)){
+            scoreInt++;
+            drawScore();
+        }
+    }
+
+    private void restartGame() throws InterruptedException {
         screen = new GameScreen();
         k = new KeyboardInput(screen);
-
         this.player = new Player();
         objectsList = new LinkedList<>();
         start(player, GAME_DELAY);
+        scoreInt = 0;
     }
 
     private void score(){
-        scoreInt = 0;
+        if (scoreInt > 0) {
+            scoreText.delete();
+        }
         scoreText = new Text(400, 100, Integer.toString(scoreInt));
         scoreText.draw();
     }
@@ -124,13 +128,21 @@ public class Game {
         player.draw(physicsEngine.getVerticalSpeed());
     }
 
+    private void checkForCollisions(){
+        if (collisionDetector.checkForCollisions(player, objectsList)) {
+            player.hasDied();
+        }
+    }
+
     private void createNewObstacles() {
         if (objectsList.size() <= 0){
             objectsList.add(new Building());
+            score();
             return;
         }
         if (objectsList.getLast().getX() < MAX_SCREEN_WIDTH - OBSTACLES_DISTANCE) {
             objectsList.add(new Building());
+            score();
         }
 
         if (objectsList.getFirst().getX() < 0 - OBSTACLES_WIDTH) {
