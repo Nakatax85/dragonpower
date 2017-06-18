@@ -14,7 +14,7 @@ import java.awt.*;
  */
 public class BeanTester {
     public static void main(String[] args) throws InterruptedException {
-        Bean bean = new Bean(100, 100, "/Users/codecadet/dev/projects/dragonpower/resources/imgs/Senzu_Bean.png");
+        Bean bean = new Bean(100, 100, "/Users/codecadet/dev/projects/dragonpower/resources/imgs/Bean.jpg");
         Rectangle pixel = new Rectangle(Constants.MAX_SCREEN_WIDTH,Constants.MAX_SCREEN_HEIGHT,1,1);
         pixel.setColor(Color.WHITE);
         pixel.draw();
