@@ -27,7 +27,7 @@ public class TestGame {
 
     public TestGame(Player player) {
         screen = new StartScreen();
-        k = new KeyboardInput(player, screen);
+        k = new KeyboardInput(screen);
         physicsEngine = new PhysicsEngine();
         this.player = player;
         obstaclesList = new LinkedList<>();

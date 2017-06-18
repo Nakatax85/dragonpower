@@ -33,7 +33,7 @@ public class Game {
 
     public Game(Player player) {
         screen = new StartScreen();
-        k = new KeyboardInput(player, screen);
+        k = new KeyboardInput(screen);
         physicsEngine = new PhysicsEngine();
         this.player = player;
         objectsList = new LinkedList<>();
@@ -81,9 +81,9 @@ public class Game {
         spaceText.draw();
     }
 
-    public void initiateNewGame() throws InterruptedException{
+    private void initiateNewGame() throws InterruptedException{
         screen = new GameScreen();
-        k = new KeyboardInput(player, screen);
+        k = new KeyboardInput(screen);
         physicsEngine = new PhysicsEngine();
         this.player = new Player();
         objectsList = new LinkedList<>();
@@ -92,8 +92,6 @@ public class Game {
     }
 
     private void moveObstacles() {
-        //ground.moveLeft(HORIZONTAL_SPEED);
-
         //TODO: Verificar se pode ser alterado para for-each ou outra coisa qualquer
         for (int i = 0; i <= objectsList.indexOf(objectsList.getLast()); i++) {
             objectsList.get(i).moveLeft(HORIZONTAL_SPEED);
