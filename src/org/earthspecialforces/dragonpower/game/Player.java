@@ -1,4 +1,4 @@
-package org.earthspecialforces.dragonpower.game.gameObjects;
+package org.earthspecialforces.dragonpower.game;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -142,7 +142,7 @@ public class Player implements Playable {
      *
      * @param jumped
      */
-    public void setJumped(boolean jumped) {
+    public void stopJumping(boolean jumped) {
         this.jumped = jumped;
     }
 

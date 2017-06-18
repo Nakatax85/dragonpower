@@ -1,14 +1,14 @@
 package org.earthspecialforces.dragonpower.testers;
 
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.earthspecialforces.dragonpower.game.gameEngines.PhysicsEngine;
-import org.earthspecialforces.dragonpower.game.gameObjects.Player;
+import org.earthspecialforces.dragonpower.game.Player;
 import org.earthspecialforces.dragonpower.input.KeyboardInput;
-import org.earthspecialforces.dragonpower.screens.Screen;
-import org.earthspecialforces.dragonpower.screens.StartScreen;
+import org.earthspecialforces.dragonpower.game.screens.Screen;
+import org.earthspecialforces.dragonpower.game.screens.StartScreen;
 
 import java.util.LinkedList;
 
+import static org.earthspecialforces.dragonpower.game.Constants.HORIZONTAL_SPEED;
 import static org.earthspecialforces.dragonpower.game.Constants.MAX_SCREEN_WIDTH;
 import static org.earthspecialforces.dragonpower.game.Constants.OBSTACLES_DISTANCE;
 
@@ -70,7 +70,7 @@ public class TestGame {
 
         //TODO: Verificar se pode ser alterado para for-each ou outra coisa qualquer
         for (int i = 0; i <= obstaclesList.indexOf(obstaclesList.getLast()); i++) {
-            obstaclesList.get(i).moveLeft(physicsEngine.getHorizontalSpeed());
+            obstaclesList.get(i).moveLeft(HORIZONTAL_SPEED);
         }
     }
 

@@ -1,4 +1,4 @@
-package org.earthspecialforces.dragonpower.screens;
+package org.earthspecialforces.dragonpower.game.screens;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 

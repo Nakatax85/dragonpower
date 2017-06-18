@@ -2,7 +2,7 @@ package org.earthspecialforces.dragonpower.game.gameEngines;
 
 import org.earthspecialforces.dragonpower.game.gameObjects.Building;
 import org.earthspecialforces.dragonpower.game.gameObjects.GameObject;
-import org.earthspecialforces.dragonpower.game.gameObjects.Player;
+import org.earthspecialforces.dragonpower.game.Player;
 
 import java.util.LinkedList;
 
@@ -18,15 +18,11 @@ import static org.earthspecialforces.dragonpower.game.Constants.*;
 public class CollisionDetector {
 
     /**
-     * Initialization of the CollisionDetector
-     */
-    public CollisionDetector() {
-    }
-
-    /**
-     * @param player
-     * @param gameObjectList
-     * @return true if the Player collides with objects of the superClass GameObjects
+     * Checks for collisions between the player object and all the objects in the game
+     * @param player         Receives one player
+     * @param gameObjectList And a list of GameObjects
+     * @return               True - if the player has collided with one GameObject
+     *                       False - if there is no collision
      */
     public boolean checkForCollisions(Player player, LinkedList<GameObject> gameObjectList) {
 
@@ -40,9 +36,11 @@ public class CollisionDetector {
     }
 
     /**
-     * @param gameObject
-     * @param player
-     * @return
+     * Checks if the player has passed one GameObjects of the type Building
+     * @param gameObject Receives one GameObject
+     * @param player  Receives one player
+     * @return        TRUE - if the players is ahead of the GameObject
+     *                FALSE - if the player didn't reach the end of the Obstacle
      */
     public boolean playerHasClearedObstacle(GameObject gameObject, Player player) {
         if (gameObject instanceof Building) {
@@ -55,9 +53,11 @@ public class CollisionDetector {
     }
 
     /**
-     * @param gameObject
-     * @param player
-     * @return
+     * Checks if one player has collided with one GameObject
+     * @param gameObject - one GameObject
+     * @param player - one player
+     * @return True - If there was a collision
+     *         False - If there wasn't
      */
     public boolean hasCollided(GameObject gameObject, Player player) {
 
@@ -84,8 +84,10 @@ public class CollisionDetector {
     }
 
     /**
-     * @param player
-     * @return true if the Player hits the ground
+     * Checks if the player hits the bottom of the screen
+     * @param player - The object player
+     * @return       True: if the player hits the ground
+     *               False: If it didn't
      */
     private boolean hitsGround(Player player) {
         if (bottomY(player) > MAX_SCREEN_HEIGHT + CLOUD + PADDING) {
@@ -95,15 +97,17 @@ public class CollisionDetector {
     }
 
     /**
+     * Calculates the Y coordinate of the bottom of the Player's image
      *
      * @param player
-     * @return
+     * @return Double: the maximum Y coordinate of the Player's image
      */
     public double bottomY(Player player) {
         return player.getGokuImage().getMaxY();
     }
 
     /**
+     * Calculates the Y coordinate of the top of the Player's image
      *
      * @param player
      * @return
@@ -113,24 +117,27 @@ public class CollisionDetector {
     }
 
     /**
+     * Calculates the X coordinate of the back of the Player's image
      *
      * @param player
-     * @return
+     * @return The minimum X coordinate of the Player's image
      */
     public double backX(Player player) {
         return player.getGokuImage().getMaxX();
     }
 
     /**
+     * Calculates the X coordinate of the front of the Player's image
      *
      * @param player
-     * @return
+     * @return The maximum X coordinate of the Player's image
      */
     public double frontX(Player player) {
         return player.getGokuImage().getMaxX() - 8;
     }
 
     /**
+     * Calculates the Y coordinate of the front of the Building's gap
      *
      * @param building
      * @return
@@ -140,6 +147,7 @@ public class CollisionDetector {
     }
 
     /**
+     * Calculates the Y coordinate of the bottom of the Building's gap
      *
      * @param building
      * @return
@@ -149,6 +157,7 @@ public class CollisionDetector {
     }
 
     /**
+     * Calculates the X coordinate of the front of the Building's gap
      *
      * @param building
      * @return

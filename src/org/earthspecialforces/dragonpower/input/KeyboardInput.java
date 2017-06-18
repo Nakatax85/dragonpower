@@ -4,10 +4,7 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.earthspecialforces.dragonpower.game.gameObjects.Player;
-import org.earthspecialforces.dragonpower.screens.GameScreen;
-import org.earthspecialforces.dragonpower.screens.Screen;
-import org.earthspecialforces.dragonpower.screens.StartScreen;
+import org.earthspecialforces.dragonpower.game.screens.Screen;
 
 
 /**

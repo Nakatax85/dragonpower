@@ -1,4 +1,4 @@
-package org.earthspecialforces.dragonpower.game.utils;
+package org.earthspecialforces.dragonpower.utils;
 
 import java.util.Random;
 

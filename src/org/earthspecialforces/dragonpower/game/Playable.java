@@ -1,4 +1,4 @@
-package org.earthspecialforces.dragonpower.game.gameObjects;
+package org.earthspecialforces.dragonpower.game;
 
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 

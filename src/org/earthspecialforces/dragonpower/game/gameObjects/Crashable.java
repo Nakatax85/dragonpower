@@ -9,10 +9,6 @@ package org.earthspecialforces.dragonpower.game.gameObjects;
  */
 public interface Crashable {
 
-    /**
-     *
-     * @return true if the object that implements Crashable is hit
-     */
-    void isHit();
+    boolean isCollided();
 
 }

@@ -19,7 +19,7 @@ public class Bean {
     }
 
     @Override
-    public boolean isHit() {
+    public boolean isCollided() {
         return hit;
     }
 

@@ -1,9 +1,7 @@
 package org.earthspecialforces.dragonpower;
 
 import org.earthspecialforces.dragonpower.game.Game;
-import org.earthspecialforces.dragonpower.game.gameEngines.PhysicsEngine;
-import org.earthspecialforces.dragonpower.game.gameObjects.Player;
-import org.earthspecialforces.dragonpower.input.KeyboardInput;
+import org.earthspecialforces.dragonpower.game.Player;
 
 import static org.earthspecialforces.dragonpower.game.Constants.GAME_DELAY;
 

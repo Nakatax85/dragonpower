@@ -1,11 +1,8 @@
 package org.earthspecialforces.dragonpower.game.gameEngines;
 
-import org.earthspecialforces.dragonpower.game.gameObjects.Building;
-import org.earthspecialforces.dragonpower.game.gameObjects.Player;
-import org.earthspecialforces.dragonpower.testers.TestObstacle;
+import org.earthspecialforces.dragonpower.game.Player;
 
 import static org.earthspecialforces.dragonpower.game.Constants.GRAVITY;
-import static org.earthspecialforces.dragonpower.game.Constants.HORIZONTAL_SPEED;
 import static org.earthspecialforces.dragonpower.game.Constants.TERMINAL_VELOCITY;
 
 /**
@@ -20,14 +17,16 @@ public class PhysicsEngine {
     private double verticalSpeed;
 
     /**
-     *
+     * The Physics Engine starts with the fall vertical speed as 0 (zero)
      */
     public PhysicsEngine() {
         verticalSpeed = 0;
     }
 
     /**
-     *
+     * Makes one player fall, by incrementing its speed by the value of GRAVITY
+     * If the player has jumped, sets its vertical speed to 0 (zero) to better
+     * simulate what would happen in reality.
      * @param player
      */
     public void fall(Player player) {
@@ -38,34 +37,18 @@ public class PhysicsEngine {
         }
         if (player.hasJumped()) {
             verticalSpeed = 0;
-            player.setJumped(false);
+            player.stopJumping(false);
         }
 
         player.updatePosition(verticalSpeed);
     }
 
     /**
-     *
-     * @param building
-     * moves the Building object from the right to the left
-     */
-    public void moveLeft(Building building){
-        building.moveLeft(HORIZONTAL_SPEED);
-    }
-
-    /**
-     *
+     * Getter of the vertical speed currently used
      * @return vertical speed
      */
     public double getVerticalSpeed() {
         return verticalSpeed;
     }
 
-    /**
-     *
-     * @return horizontal speed
-     */
-    public double getHorizontalSpeed() {
-        return HORIZONTAL_SPEED;
-    }
 }

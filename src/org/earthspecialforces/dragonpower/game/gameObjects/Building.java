@@ -1,5 +1,5 @@
 package org.earthspecialforces.dragonpower.game.gameObjects;
-import org.earthspecialforces.dragonpower.game.utils.RandomGen;
+import org.earthspecialforces.dragonpower.utils.RandomGen;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
