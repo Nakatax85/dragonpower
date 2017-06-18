@@ -15,7 +15,7 @@ public class StartScreen extends Screen {
     public StartScreen() {
         super(new Picture(PADDING, PADDING, "imgs/Start_Screen_bckg.jpg"));
         logo = new Picture(260, 200, "imgs/DP_logo.png");
-        spaceTextB = new Picture(230,400, "imgs/PRESS SPACE TO START_B.PNG");
+        spaceTextB = new Picture(230,400, "imgs/PRESS SPACE TO START_B.png");
         drawBackground();
 
     }
