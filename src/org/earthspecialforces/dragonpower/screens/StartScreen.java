@@ -2,8 +2,6 @@ package org.earthspecialforces.dragonpower.screens;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.awt.*;
-
 import static org.earthspecialforces.dragonpower.game.Constants.PADDING;
 
 /**
@@ -13,7 +11,6 @@ public class StartScreen extends Screen {
 
     private Picture spaceTextB;
     private Picture logo;
-    private Graphics2D g2;
 
     public StartScreen() {
         super(new Picture(PADDING, PADDING, "imgs/Start_Screen_bckg.jpg"));
