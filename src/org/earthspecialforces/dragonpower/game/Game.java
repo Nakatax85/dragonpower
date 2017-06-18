@@ -55,11 +55,10 @@ public class Game {
             ifSpaceIsPressedPlayerJumps();
             makePlayerFall();
             moveObstacles();
-            updateScore();
+            showScore();
             checkForCollisions();
         }
         gameOver();
-        
         whenSpaceIsPressedRestartsGame();
     }
 
@@ -109,26 +108,27 @@ public class Game {
     }
 
     private void moveObstacles() {
-
         for (GameObject iterator : objectsList) {
             iterator.moveLeft(HORIZONTAL_SPEED);
         }
     }
 
     private void updateScore() {
+
+    }
+
+    private void showScore() {
+        if (scoreInt == 0 && objectsList.getFirst().getX() >= MAX_SCREEN_WIDTH - OBSTACLES_WIDTH){
+            scoreText = new Text(400, 100, Integer.toString(scoreInt));
+            scoreText.draw();
+            return;
+        }
         if (collisionDetector.playerHasClearedObstacle(objectsList.getFirst(), player)) {
             scoreInt++;
             scoreText.setText(Integer.toString(scoreInt));
             scoreText.translate(0, 0);
         }
-    }
 
-    private void showScore() {
-        if (scoreInt > 0) {
-            scoreText.delete();
-        }
-        scoreText = new Text(400, 100, Integer.toString(scoreInt));
-        scoreText.draw();
     }
 
     private void gameOver() {
