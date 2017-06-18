@@ -1,8 +1,8 @@
 package org.earthspecialforces.dragonpower.screens;
 
-import org.academiadecodigo.simplegraphics.graphics.*;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.earthspecialforces.dragonpower.input.KeyboardInput;
+
+import java.awt.*;
 
 import static org.earthspecialforces.dragonpower.game.Constants.PADDING;
 
@@ -11,40 +11,32 @@ import static org.earthspecialforces.dragonpower.game.Constants.PADDING;
  */
 public class StartScreen extends Screen {
 
-    private Text startText;
-    private Text spaceText;
+    private Picture spaceTextB;
     private Picture logo;
-    private Picture gokuStart;
+    private Graphics2D g2;
 
-    public StartScreen(){
-        super(new Picture(PADDING,PADDING, "imgs/Start_Screen_bckg.jpg"));
-        logo = new Picture(280,200,"imgs/DP_logo.png");
-        startText = new Text(320,425,"Welcome to Dragon Power!");
-        spaceText = new Text(320,450, "<Press SPACE to START GAME>");
+    public StartScreen() {
+        super(new Picture(PADDING, PADDING, "imgs/Start_Screen_bckg.jpg"));
+        logo = new Picture(260, 200, "imgs/DP_logo.png");
+        spaceTextB = new Picture(230,400, "imgs/PRESS SPACE TO START_B.PNG");
         drawBackground();
+
     }
 
     @Override
-    public void drawBackground(){
+    public void drawBackground() {
         super.drawBackground();
         logo.draw();
-        getStartText();
-        spaceText.draw();
+        getSpaceText();
     }
 
     @Override
-    public void clear(){
+    public void clear() {
         super.clear();
-        startText.delete();
-        spaceText.delete();
+        spaceTextB.delete();
     }
 
-    public void getStartText() {
-        startText.setColor(Color.RED);
-        startText.draw();
-    }
-
-    public Text getSpaceText() {
-        return spaceText;
+    public void getSpaceText() {
+        spaceTextB.draw();
     }
 }
