@@ -11,7 +11,7 @@ import static org.earthspecialforces.dragonpower.game.Constants.*;
 /**
  * This class represents the Player and implements the interface Playable
  */
-public class Player implements Playable {
+public class Player {
 
 
     String gokuImagePath = "imgs/Goku_Cloud_1.png";
@@ -36,7 +36,7 @@ public class Player implements Playable {
     /**
      * Makes the player jump by incrementing it's Y position by a given constant number
      */
-    @Override
+
     public void jump() {
         if (alive) {
             if (positionY > JUMP_HEIGHT) {
@@ -93,7 +93,7 @@ public class Player implements Playable {
      * Changes the player's image to the image of the Super Sayan Goku
      * @return
      */
-    public Picture getSuperSayanImage(){
+    public Picture changeToSuperSayanImage(){
         gokuImage.load(superSayanImagePath);
         gokuImage.translate(0,0);
         return gokuImage;
@@ -103,7 +103,7 @@ public class Player implements Playable {
      * Changes the player's picture to the image of the Super Sayan 3 Goku
      * @return
      */
-    public Picture getSuperSayan3Image(){
+    public Picture changeToSuperSayan3Image(){
        gokuImage.load(superSayan3ImagePath);
        gokuImage.translate(0,0);
         return gokuImage;
@@ -113,7 +113,7 @@ public class Player implements Playable {
      * Changes the player's picture to its initial image
      * @return
      */
-    public Picture restartGokuImage(){
+    public Picture changeToDefaultGokuImage(){
         gokuImage.load(gokuImagePath);
         gokuImage.translate(0,0);
         return gokuImage;
@@ -131,7 +131,7 @@ public class Player implements Playable {
      * Returns TRUE if the players is alive and FALSE if it died
      * @return
      */
-    @Override
+
     public boolean isAlive() {
         return alive;
     }

@@ -34,13 +34,12 @@ public class Game {
      * Starts the game, instantiating all its properties and saving the player
      * that is going to play the game
      *
-     * @param player the player of this game
      */
-    public Game(Player player) {
+    public Game() {
         screen = new StartScreen();
         k = new KeyboardInput(screen);
         physicsEngine = new PhysicsEngine();
-        this.player = player;
+        this.player = new Player();
         objectsList = new LinkedList<>();
         collisionDetector = new CollisionDetector();
         scoreInt = 0;

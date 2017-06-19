@@ -59,7 +59,7 @@ public class CollisionDetector {
      * @return True - If there was a collision
      *         False - If there wasn't
      */
-    public boolean hasCollided(GameObject gameObject, Player player) {
+    private boolean hasCollided(GameObject gameObject, Player player) {
 
         if (hitsGround(player)) {
             player.hasDied();
@@ -102,7 +102,7 @@ public class CollisionDetector {
      * @param player
      * @return Double: the maximum Y coordinate of the Player's image
      */
-    public double bottomY(Player player) {
+    private double bottomY(Player player) {
         return player.getGokuImage().getMaxY();
     }
 
@@ -112,7 +112,7 @@ public class CollisionDetector {
      * @param player
      * @return
      */
-    public double topY(Player player) {
+    private double topY(Player player) {
         return player.getGokuImage().getY();
     }
 
@@ -122,7 +122,7 @@ public class CollisionDetector {
      * @param player
      * @return The minimum X coordinate of the Player's image
      */
-    public double backX(Player player) {
+    private double backX(Player player) {
         return player.getGokuImage().getMaxX();
     }
 
@@ -132,7 +132,7 @@ public class CollisionDetector {
      * @param player
      * @return The maximum X coordinate of the Player's image
      */
-    public double frontX(Player player) {
+    private double frontX(Player player) {
         return player.getGokuImage().getMaxX() - 8;
     }
 
@@ -142,7 +142,7 @@ public class CollisionDetector {
      * @param obstacle
      * @return
      */
-    public double gapTopY(Obstacle obstacle) {
+    private double gapTopY(Obstacle obstacle) {
         return obstacle.getGap().getY();
     }
 
@@ -152,7 +152,7 @@ public class CollisionDetector {
      * @param obstacle
      * @return
      */
-    public double gapBotY(Obstacle obstacle) {
+    private double gapBotY(Obstacle obstacle) {
         return obstacle.getGap().getY() + obstacle.getGap().getHeight();
     }
 
@@ -162,7 +162,7 @@ public class CollisionDetector {
      * @param obstacle
      * @return
      */
-    public double gapFrontX(Obstacle obstacle) {
+    private double gapFrontX(Obstacle obstacle) {
         return obstacle.getGap().getX() + obstacle.getGap().getWidth();
     }
 
