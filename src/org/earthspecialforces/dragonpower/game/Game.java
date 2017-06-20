@@ -21,6 +21,8 @@ import static org.earthspecialforces.dragonpower.game.Constants.*;
 public class Game {
 
     //TODO: Change this to a specific GameObjects_List to encapsulate our GameObjects List
+    //We do more accesses to the objects on the List ? --> ArrayList
+    //We remove more elements than do accesses ? --> LinkedList
     private LinkedList<GameObject> objectsList;
     private PhysicsEngine physicsEngine;
     private KeyboardInput k;
