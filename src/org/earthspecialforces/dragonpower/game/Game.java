@@ -203,9 +203,9 @@ public class Game {
      */
     private void restartGame() throws InterruptedException {
         screen = new GameScreen();
-        k = new KeyboardInput(screen);
+        k.setGameScreen();
         this.player = new Player();
-        objectsList = new LinkedList<>();
+        objectsList.clear();
         scoreText.delete();
         scoreInt = 0;
         scoreText = new Text(400, 100, Integer.toString(scoreInt));

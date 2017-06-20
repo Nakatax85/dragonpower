@@ -4,6 +4,7 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.earthspecialforces.dragonpower.game.screens.GameScreen;
 import org.earthspecialforces.dragonpower.game.screens.Screen;
 
 
@@ -49,12 +50,8 @@ public class KeyboardInput implements KeyboardHandler {
         this.pressed = false;
     }
 
-    public Keyboard getKeyboard() {
-        return keyboard;
-    }
-
-    public Screen getScreen() {
-        return screen;
+    public void setGameScreen() {
+        this.screen = new GameScreen();
     }
 }
 
