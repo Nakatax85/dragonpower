@@ -5,7 +5,7 @@
     <target name="init" description="Initializes properties">
         <property name="project.name" value="dragonpower" />
         <property name="src.dir" value="src" />
-        <property name="main.class" value="org.earthspecialforces.dragonpower.Main" />
+        <property name="main.class" value="{src.dir}/org.earthspecialforces.dragonpower.Main" />
         <property name="build.dir" value="build" />
         <property name="classes.dir" value="${build.dir}/classes" />
         <property name="lib.dir" value="lib" />

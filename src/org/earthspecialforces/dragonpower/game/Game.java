@@ -50,17 +50,16 @@ public class Game {
     /**
      * Starts the game
      *
-     * @param delay
      * @throws InterruptedException - Because it uses the Thread.sleep method to
      * implement some delay while refreshing the game's screen.
      */
-    public void start(int delay) throws InterruptedException {
+    public void start() throws InterruptedException {
 
         whenSpaceIsPressedChangesToGameScreen();
 
         while (player.isAlive()) {
             // Pause for a while
-            Thread.sleep(delay);
+            Thread.sleep(GAME_DELAY);
 
             createNewObstacles();
             ifSpaceIsPressedPlayerJumps();
@@ -212,7 +211,7 @@ public class Game {
         scoreText = new Text(400, 100, Integer.toString(scoreInt));
         scoreText.grow(20,25);
         scoreText.draw();
-        start(GAME_DELAY);
+        start();
     }
 }
 
