@@ -1,8 +1,11 @@
 package org.earthspecialforces.dragonpower.game.gameObjects;
 
+import com.sun.org.apache.regexp.internal.RE;
 import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 import com.sun.tools.doclets.formats.html.WriterFactoryImpl;
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Line;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.earthspecialforces.dragonpower.game.Constants;
 
@@ -20,7 +23,15 @@ public class Bean extends GameObject implements Collectable {
     private int rotationLimit = 0;
     private Picture p1;
     private Picture p2;
-    private Picture line;
+
+
+    private Rectangle rectangle;
+    private Rectangle rectangle2;
+    private Rectangle rectangle3;
+
+    private Line line;
+    private Line line1;
+    private Line line2;
     private boolean disappered = false;
     private int i = 0;
 
@@ -32,11 +43,31 @@ public class Bean extends GameObject implements Collectable {
         value = 1;
         rotated = false;
 
+        rectangle = new Rectangle(100,100,100,100);
+        rectangle.setColor(Color.RED);
+        rectangle2 = new Rectangle(200,100,100,100);
+        rectangle2.setColor(Color.BLUE);
+        rectangle3 = new Rectangle(300,100,100,100);
+        rectangle3.setColor(Color.RED);
+
+
+        line = new Line (100,100,120,100);
+        line1 = new Line (100,101,120,101);
+        line2 = new Line (100,102,120,102);
+
+
+        line.setColor(Color.WHITE);
+        line2.setColor(Color.WHITE);
+        line.setColor(Color.WHITE);
+
         p1 = new Picture(100, 100, imagePath);
-        p2 = new Picture(100, 100,imagePath);
-        line = new Picture(1,p2.getHeight());
-        line.translate(400, 400);
-        p2.translate(500,500);
+        p2 = new Picture(0, 0,imagePath);
+        line.translate(p2.getWidth(), 400);
+        line1.translate(p2.getWidth(),400);
+        line2.translate(p2.getWidth(),400);
+
+        p2.translate(0,400);
+        p2.draw();
     }
 
     @Override
@@ -54,6 +85,10 @@ public class Bean extends GameObject implements Collectable {
     }
 
     public void draw() {
+
+
+
+
        /* double value = 0;
         if(rotationLimit < 5){
             value = -5;
@@ -80,48 +115,51 @@ public class Bean extends GameObject implements Collectable {
         }
 
         */
+/*
+       rectangle.translate(-5,0);
+       rectangle2.translate(-5,0);
+       rectangle3.translate(-5,0);
 
+       if(rectangle.getX() < 0 && rectangle.getX() + rectangle.getWidth() < 0){
+           rectangle.translate(Constants.MAX_SCREEN_WIDTH ,0);
+       }
 
+       if( rectangle2.getX() < 0 && rectangle2.getX() + rectangle2.getWidth() < 0){
+            rectangle2.translate(Constants.MAX_SCREEN_WIDTH,0);
+       }
 
-        if (!disappered) {
-//            copyColumnPixels(p1,p2);
-
-            //System.out.println("White:\nRed: "+Color.WHITE.getRed() +"Green: "+Color.WHITE.getGreen() + "\nBlue:"+Color.WHITE.getBlue());
-            System.out.println("GetWith:" + p2.getWidth());
-            System.out.println("getMaxX" + p2.getMaxX());
-            System.out.println("GetHeight:" + p2.getHeight());
-            System.out.println("getMaxY" + p2.getMaxY());
-
-
-
-            p2.setColorAt(0,0,Color.RED);
-            p2.setColorAt(p2.getWidth() - 1,0,Color.RED);
-            p2.setColorAt(0,p2.getHeight() - 1,Color.RED);
-            p2.setColorAt(p2.getWidth() - 1 ,p2.getHeight() - 1,Color.RED);
-
-            p1.setColorAt(0,0,p2.getColorAt(0,0));
-            //paints p2 a RED
-
-            paintColumn(line,0,Color.RED);
-
-            //p1.grow(100, 100)
-            //  p2.grow(100, 100);
-            disappered = true;
-
-    }
-
-        copyColumn(p2,line,0 );
-        for (int j = 1; j < p2.getWidth() - 1; j++) {
-             copyDifferentColumns(p2,p2,j,j-1);
+        if( rectangle3.getX() < 0 && rectangle3.getX() + rectangle3.getWidth() < 0){
+            rectangle3.translate(Constants.MAX_SCREEN_WIDTH ,0);
         }
-        System.out.println(p2.getWidth());
-        System.out.println(line.getWidth());
-        copyDifferentColumns(line,p2,0,p2.getWidth() -1 );
+*/
+       //working code//
+       /* copyDifferentColumns(p2,p2,0,p2.getWidth()-1);
+        for (int j = 1; j < p2.getWidth() ; j++) {
+             copyDifferentColumns(p2,p2,j,j-1);
+        }*/
 
 
-       // p1.draw();
-        p2.draw();
+        line.translate(-10,0);
+        line1.translate(-10,0);
+        line2.translate(-10,0);
+
+        if(line.getX() + line.getWidth() < 0){
+            line.translate(p2.getWidth() ,0);
+        }
+
+        if(line1.getX() + line1.getWidth() < 0){
+            line1.translate(p2.getWidth() ,0);
+        }
+        if(line2.getX() + line2.getWidth() < 0){
+            line2.translate(p2.getWidth() ,0);
+        }
+
         line.draw();
+        line1.draw();
+        line2.draw();
+
+      //  p2.draw();
+        //line.draw();
 }
 
     private void copyColumnPixels(Picture source, Picture destination) {

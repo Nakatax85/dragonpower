@@ -20,7 +20,7 @@ public class BeanTester {
         pixel.draw();
         bean.draw();
 
-        int delay = 300;
+        int delay = 5;
 
         while (true) {
 
